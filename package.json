@@ -1,0 +1,14 @@
+{
+  "name": "webpage",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "sync:research": "node scripts/sync-research.js",
+    "sync:scholar": "node scripts/sync-scholar.js",
+    "build": "node build.js",
+    "validate": "node scripts/validate-site.js"
+  },
+  "dependencies": {
+    "katex": "^0.17.0"
+  }
+}

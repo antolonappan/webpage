@@ -1,0 +1,10 @@
+{
+    "name": "Anto Idicherian Lonappan",
+    "designation": "Postdoctoral Fellow",
+    "resume": "CV",
+    "title": "Research Profile",
+    "section1": "I am a postdoctoral fellow at the University of California, San Diego, working on precision cosmology with the Cosmic Microwave Background. My research develops statistical and computational methods for extracting weak polarization signals from survey data, with emphasis on gravitational lensing, B-mode polarization, delensing, and cosmic birefringence.",
+    "section2": "A central aim of my work is to connect theoretical signatures of fundamental physics with the practical realities of modern CMB observations: foregrounds, instrumental systematics, map-level simulations, likelihood construction, and cross-survey consistency. I contribute to analyses and forecasts for experiments including POLARBEAR, Simons Array, Simons Observatory, LiteBIRD, and CMB-S4.",
+    "section3": "My research path began with broad questions in cosmology: how well current data distinguish dark-energy models, how Bayesian evidence can compare competing descriptions of cosmic acceleration, and how simulations reveal the role of baryonic feedback in galaxy groups and clusters. That foundation shaped the way I approach cosmological inference: as a dialogue between physical modeling, data quality, and statistical robustness.",
+    "section4": "During my PhD at SISSA and subsequent postdoctoral work in Rome and San Diego, this trajectory sharpened toward CMB polarization. I now focus on methods that turn subtle polarization patterns into tests of lensing, inflationary physics, and parity violation. The long-term goal is to make next-generation CMB data precise enough not only to measure standard cosmology better, but to expose where new physics might be hiding."
+}

@@ -1,0 +1,545 @@
+{
+    "generatedAt": "2026-06-21T01:31:44.802Z",
+    "papers": [
+        {
+            "arxivId": "2606.19337",
+            "arxivVersion": "2606.19337v1",
+            "title": "Constraints on Cosmic Strings from the Curl-Mode CMB Lensing Power Spectrum measured by ACT DR6",
+            "description": "A network of cosmic strings is one of the few well-motivated cosmological sources of vector and tensor metric perturbations on the largest observable scales. Such perturbations imprint a characteristic curl component in the deflection angle of cosmic microwave background (CMB) photons that, unlike the scalar lensing potential, vanishes for adiabatic density fluctuations at linear order. We exploit the curl-mode lensing reconstruction released as part of the Atacama Cosmology Telescope (ACT) Data Release~6 (DR6), based on five seasons of temperature and polarization data covering $9400~\\mathrm{deg}^2$ of sky, to set new constraints on the dimensionless string tension $Gμ$ and the inter-commutation (reconnection) probability $P$. Modelling the string-induced curl power spectrum within the velocity-dependent one-scale framework, we obtain a $2σ$ upper bound on the combination $GμP^{-1}\\le 3.5\\times 10^{-5}$ in the small-$P$ regime, and $Gμ\\le 5.0\\times 10^{-5}$ at $2σ$ assuming the canonical Nambu-Goto value $P=1$. Combining the ACT DR6 curl bandpowers with the Planck 2013 curl-mode reconstruction, which extends down to $L_{\\rm min}=2$, tightens these bounds to $GμP^{-1}\\le 3.2\\times 10^{-5}$ and $Gμ\\le 4.3\\times 10^{-5}$ ($2σ$). These represent the tightest constraints on cosmic strings derived from the curl-mode CMB lensing power spectrum to date. Using the ACT data alone, compared to the ACT 2008-season analysis, the ACT DR6 constraint on $GμP^{-1}$ is nearly an order of magnitude tighter.",
+            "authors": [
+                "A. I. Lonappan",
+                "K. Ramesh",
+                "T. Namikawa",
+                "F. J. Qu",
+                "B. Keating"
+            ],
+            "published": "2026-06-17T17:58:52Z",
+            "updated": "2026-06-17T17:58:52Z",
+            "date": "June 2026",
+            "doi": "",
+            "doiUrl": "",
+            "arxivUrl": "https://arxiv.org/abs/2606.19337v1",
+            "pdfUrl": "https://arxiv.org/pdf/2606.19337v1",
+            "htmlUrl": "https://arxiv.org/html/2606.19337v1",
+            "figures": [
+                {
+                    "src": "/assets/research/2606.19337/figure-1.png",
+                    "sourceUrl": "https://arxiv.org/html/2606.19337v1/x1.png",
+                    "caption": "Figure 1: Two-dimensional constraints on the cosmic-string parameters $(P,G\\mu)$ from the ACT DR6 ( $2\\sigma$ upper limit, red dashed line) and joint ACT DR6 + Planck 2013 (blue solid line) curl-mode lensing bandpowers; the shaded region is excluded at $2\\sigma$ by the joint constraint. The black dashed line shows the small- $P$ disfavoured region from the GKS-induced temperature angular power spectrum [ 46 ] .",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2606.19337/figure-2.png",
+                    "sourceUrl": "https://arxiv.org/html/2606.19337v1/x2.png",
+                    "caption": "Figure 2: Marginalised one-dimensional posterior $p(G\\mu)$ at fixed $P=1$ , obtained from the ACT DR6 curl-mode bandpowers (red) and from the joint ACT DR6 + Planck 2013 likelihood (blue). The dashed vertical lines indicate the corresponding $2\\sigma$ upper bounds, $G\\mu\\leq 5.0\\times 10^{-5}$ (ACT) and $G\\mu\\leq 4.3\\times 10^{-5}$ (ACT + Planck 2013).",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2606.19337/figure-3.png",
+                    "sourceUrl": "https://arxiv.org/html/2606.19337v1/x3.png",
+                    "caption": "Figure 3: ACT DR6 minimum-variance curl-mode bandpowers (red points) and Planck 2013 curl-mode bandpowers (blue points) compared with the theoretical curl-mode angular power spectrum $C_{L}^{\\Omega\\Omega}$ predicted for cosmic strings with $G\\mu=5\\times 10^{-5}$ and $P=1$ (solid line), close to the $2\\sigma$ upper bound from the ACT-only analysis (Figure 2 ). The bandpowers are plotted with the scaling $L^{1/2}L^{2}(L+1)^{2}C_{L}^{\\Omega\\Omega}/(2\\pi)$ following the convention of [ 33 ] .",
+                    "alt": "Refer to caption"
+                }
+            ],
+            "venue": "PRD"
+        },
+        {
+            "arxivId": "2504.13154",
+            "arxivVersion": "2504.13154v3",
+            "title": "Constraints on Anisotropic Cosmic Birefringence from CMB B-mode Polarization",
+            "description": "Cosmic birefringence$-$the rotation of the polarization plane of light as it traverses the universe$-$offers a direct observational window into parity-violating physics beyond the Standard Model. In this work, we revisit the anisotropic component of cosmic birefringence, which leads to the generation of $B$-mode polarization in the cosmic microwave background (CMB). Using an exact theoretical treatment beyond the thin last-scattering surface approximation, we constrain the amplitude of anisotropic birefringence with combined polarization data from SPTpol, ACT, POLARBEAR, and BICEP. The joint analysis yields a best-fit amplitude of $A_{\\rm CB} = 0.42^{+0.40}_{-0.34} \\times 10^{-4}$, consistent with zero within $2σ$, and we place a 95\\% confidence-level upper bound of $A_{\\rm CB} < 1 \\times 10^{-4}$. The constraint is not dominated by any single experiment and remains robust under the inclusion of a possible isotropic rotation angle. These results provide leading constraints on anisotropic cosmic birefringence from CMB $B$-mode polarization and illustrate the potential of upcoming experiments to improve sensitivity to parity-violating effects in the early universe.",
+            "authors": [
+                "A. I. Lonappan",
+                "B. Keating",
+                "K. Arnold"
+            ],
+            "published": "2025-04-17T17:56:23Z",
+            "updated": "2025-06-26T17:37:10Z",
+            "date": "Aug 2025",
+            "doi": "10.1103/yxmh-rh9z",
+            "doiUrl": "https://doi.org/10.1103/yxmh-rh9z",
+            "arxivUrl": "https://arxiv.org/abs/2504.13154v3",
+            "pdfUrl": "https://arxiv.org/pdf/2504.13154v3",
+            "htmlUrl": "https://arxiv.org/html/2504.13154v3",
+            "figures": [
+                {
+                    "src": "/assets/research/2504.13154/figure-1.png",
+                    "sourceUrl": "https://arxiv.org/html/2504.13154v3/x1.png",
+                    "caption": "Figure 1: Theoretical B-mode spectra are shown for tensor modes with $r=0.02$ (blue), lensing with $A_{\\mathrm{lens}}=1$ (orange), anisotropic birefringence with $A_{\\mathrm{CB}}=1\\times 10^{-4}$ (green) and isotropic rotation with $\\alpha=0.60^{\\circ}$ (red). Overlaid error bars are the measurements from BICEP (purple), POLARBEAR (brown), SPTpol (pink), and ACT (grey).",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2504.13154/figure-2.png",
+                    "sourceUrl": "https://arxiv.org/html/2504.13154v3/x2.png",
+                    "caption": "Figure 2: Posterior probability distributions for the amplitude $A_{\\mathrm{CB}}$ of anisotropic cosmic birefringence, sampled from different dataset combinations (SPTpol, ACT, POLARBEAR, and BICEP).",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2504.13154/figure-3.png",
+                    "sourceUrl": "https://arxiv.org/html/2504.13154v3/x3.png",
+                    "caption": "Figure 3: Corner plot showing the marginalized and joint posterior distributions for the anisotropic cosmic birefringence amplitude $A_{\\rm CB}$ and the isotropic rotation angle $\\alpha$ from the combined dataset. The blue curve represents the marginalized constraint on $A_{\\rm CB}$ alone, yielding a best-fit of $4.6^{+3.5}_{-3.8}\\times 10^{-5}$ . The green curve shows the marginalized constraint on $\\alpha$ alone, centered at $0.58^{+0.19}_{-0.35}$ degrees. The red contours correspond to the joint fit, $\\theta(A_{\\rm CB},\\alpha)$ , where parameter degeneracy broadens the posteriors and weakens the constraint. From this joint fit, we find no statistically significant detection of $A_{\\rm CB}$ , and report a 95% confidence level upper limit of $A_{\\rm CB}<1.0\\times 10^{-4}$ . The shaded region represents the 68% confidence interval.",
+                    "alt": "Refer to caption"
+                }
+            ],
+            "venue": "PRD"
+        },
+        {
+            "arxivId": "2503.04708",
+            "arxivVersion": "2503.04708v2",
+            "title": "Improving Cosmic Birefringence Constraints via Delensing",
+            "description": "We present a study on using delensing to enhance cosmic birefringence measurements based on full-sky, map-based simulations. In our analysis, we neglect foreground contamination and instrumental systematics to isolate the intrinsic impact of delensing on both isotropic and anisotropic birefringence. For the isotropic case, assuming a constant rotation angle of $β= 0.35^\\circ$, delensing reduces the lensing-induced variance in the EB power spectrum, yielding an improvement in sensitivity of approximately 10% at 6 $μ$K-arcmin noise and 25-40% at lower noise levels. For the anisotropic case, using simulations at 1 $μ$K-arcmin noise, we reconstruct the birefringence angle for a scale-invariant spectrum and mitigate lensing bias by delensing, achieving a 50% reduction in the leading $N_{(0)}$ bias and a 30% improvement in the constraints on the amplitude $A_{CB}$. Our results demonstrate that delensing is an effective tool for enhancing the detectability of subtle parity-violating signals in the cosmic microwave background with forthcoming experiments such as the Simons Observatory, CMB-S4, and LiteBIRD.",
+            "authors": [
+                "Anto Idicherian Lonappan"
+            ],
+            "published": "2025-03-06T18:55:46Z",
+            "updated": "2025-05-26T15:38:46Z",
+            "date": "May 2025",
+            "doi": "10.1088/1475-7516/2025/07/009",
+            "doiUrl": "https://doi.org/10.1088/1475-7516/2025/07/009",
+            "arxivUrl": "https://arxiv.org/abs/2503.04708v2",
+            "pdfUrl": "https://arxiv.org/pdf/2503.04708v2",
+            "htmlUrl": "https://arxiv.org/html/2503.04708v2",
+            "figures": [
+                {
+                    "src": "/assets/research/2503.04708/figure-1.png",
+                    "sourceUrl": "https://arxiv.org/html/2503.04708v2/x1.png",
+                    "caption": "Figure 1 : Left : Binned reconstructed lensing potential power spectrum cross-correlated with the input $\\phi_{LM}$ . Right : Binned power spectrum of the reconstructed anisotropic birefringence angle cross-correlated with the input $\\alpha_{LM}$ . In both panels, the blue points with error bars represent the binned reconstructed spectra, and the grey solid line indicates the input signal. The error bars denote the standard deviation from 100 simulations. In the left panel, the solid colored lines show the $N^{\\phi}_{(0)}$ bias and the dashed colored lines depict the iterative $N^{\\phi}_{(0)}$ bias, with red, brown, and pink corresponding to noise levels of 6, 2, and 1 $\\mu$ K-arcmin, respectively. In the right panel, the solid pink line denotes the $N^{\\alpha}_{(0)}$ bias for the 1 $\\mu$ K-arcmin case.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2503.04708/figure-2.png",
+                    "sourceUrl": "https://arxiv.org/html/2503.04708v2/x4.png",
+                    "caption": "Figure 3 : Binned $EB$ power spectrum at low $\\ell$ . The blue error bars represent the lensed spectrum, while the pink error bars correspond to the delensed spectrum with S1 strategy. The error bars are computed using 100 realizations.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2503.04708/figure-3.png",
+                    "sourceUrl": "https://arxiv.org/html/2503.04708v2/x5.png",
+                    "caption": "Figure 4 : Best-fit values of $\\beta$ with corresponding 1 $\\sigma$ error bars for simulation sets at various noise levels. For the 6 $\\mu$ K-arcmin case, we show both the lensed and quadratic-estimator delensed results. For the lower noise levels (2 and 1 $\\mu$ K-arcmin), in addition to quadratic estimator delensing, we also present constraints from iterative delensing using a Gaussian iterative $N^{\\phi}_{(0)}$ approach. Blue error bars denote the lensed case, green error bars correspond to quadratic estimator delensed constraints, and red error bars indicate iterative $N^{\\phi}_{(0)}$ based constraints. The true value is marked by the dashed grey line. Sensitivity improvements from delensing are annotated above the dashed line, while percentage improvements comparing lensed and iterative delensing results are shown below it.",
+                    "alt": "Refer to caption"
+                }
+            ],
+            "venue": "JCAP"
+        },
+        {
+            "arxivId": "2507.22618",
+            "arxivVersion": "2507.22618v2",
+            "title": "LiteBIRD science goals and forecasts: improved full-sky reconstruction of the gravitational lensing potential through the combination of Planck and LiteBIRD data",
+            "description": "Cosmic microwave background (CMB) photons are deflected by large-scale structure through gravitational lensing. This secondary effect introduces higher-order correlations in CMB anisotropies, which are used to reconstruct lensing deflections. This allows mapping of the integrated matter distribution along the line of sight, probing the growth of structure, and recovering an undistorted view of the last-scattering surface. Gravitational lensing has been measured by previous CMB experiments, with $\\textit{Planck}$'s $42\\,σ$ detection being the current best full-sky lensing map. We present an enhanced $\\textit{LiteBIRD}$ lensing map by extending the CMB multipole range and including the minimum-variance estimation, leading to a $49$ to $58\\,σ$ detection over $80\\,\\%$ of the sky, depending on the final complexity of polarized Galactic emission. The combination of $\\textit{Planck}$ and $\\textit{LiteBIRD}$ will be the best full-sky lensing map in the 2030s, providing a $72$ to $78\\,σ$ detection over $80\\,\\%$ of the sky, almost doubling $\\textit{Planck}$'s sensitivity. Finally, we explore different applications of the lensing map, including cosmological parameter estimation using a lensing-only likelihood and internal delensing, showing that the combination of both experiments leads to improved constraints. The combination of $\\textit{Planck}$ + $\\textit{LiteBIRD}$ will improve the $S_8$ constraint by a factor of 2 compared to $\\textit{Planck}$, and $\\textit{Planck}$ + $\\textit{LiteBIRD}$ internal delensing will improve $\\textit{LiteBIRD}$'s tensor-to-scalar ratio constraint by $6\\,\\%$. We have tested the robustness of our results against foreground models of different complexity, showing that improvements remains even for the most complex foregrounds.",
+            "authors": [],
+            "published": "2025-07-30T12:38:34Z",
+            "updated": "2025-11-25T10:43:44Z",
+            "date": "Aug 2025",
+            "doi": "10.48550/arXiv.2507.22618",
+            "doiUrl": "https://doi.org/10.48550/arXiv.2507.22618",
+            "arxivUrl": "https://arxiv.org/abs/2507.22618v2",
+            "pdfUrl": "https://arxiv.org/pdf/2507.22618v2",
+            "htmlUrl": "https://arxiv.org/html/2507.22618v2",
+            "figures": [
+                {
+                    "src": "/assets/research/2507.22618/figure-1.png",
+                    "sourceUrl": "https://arxiv.org/html/2507.22618v2/x1.png",
+                    "caption": "Figure 1 : Foreground and noise residuals computed from $400$ component-separated temperature and polarization simulations in the simple-foregrounds case. Solid black lines correspond to the input signal (from left to right, $T$ , $E$ , and $B$ ). Residuals are shown for LiteBIRD (blue), Planck (orange) and Planck + LiteBIRD (green). Temperature power spectra are calculated with the $97\\,\\%$ Planck Galactic mask, while polarization results are for full sky.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2507.22618/figure-2.png",
+                    "sourceUrl": "https://arxiv.org/html/2507.22618v2/x2.png",
+                    "caption": "Figure 2 : Foreground and noise residuals computed from $400$ component-separated temperature and polarization simulations of Planck + LiteBIRD . Solid black lines correspond to the input signal (from left to right, $T$ , $E$ , and $B$ ). Residuals are shown for the no-foregrounds (blue), simple-foregrounds (orange), and complex-foreground (green) cases. Temperature power spectra are calculated with the $97\\,\\%$ Planck Galactic mask, while polarization results are for full sky.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2507.22618/figure-3.png",
+                    "sourceUrl": "https://arxiv.org/html/2507.22618v2/x3.png",
+                    "caption": "Figure 3 : Ratio between the diagonal harmonic-space C-inverse filtered data of masked and full-sky angular power spectra for no-foreground LiteBIRD simulations. Results are averaged over 400 simulations. Dashed black lines correspond to the unmasked sky fraction, $f_{\\mathrm{sky},2}=\\sum_{i}w_{i}^{2}/N_{\\rm pix}$ .",
+                    "alt": "Refer to caption"
+                }
+            ],
+            "venue": "JCAP"
+        },
+        {
+            "arxivId": "2504.01669",
+            "arxivVersion": "2504.01669v3",
+            "title": "The CosmoVerse White Paper: Addressing observational tensions in cosmology with systematics and fundamental physics",
+            "description": "The standard model of cosmology has provided a good phenomenological description of a wide range of observations both at astrophysical and cosmological scales for several decades. This concordance model is constructed by a universal cosmological constant and supported by a matter sector described by the standard model of particle physics and a cold dark matter contribution, as well as very early-time inflationary physics, and underpinned by gravitation through general relativity. There have always been open questions about the soundness of the foundations of the standard model. However, recent years have shown that there may also be questions from the observational sector with the emergence of differences between certain cosmological probes. In this White Paper, we identify the key objectives that need to be addressed over the coming decade together with the core science projects that aim to meet these challenges. These discordances primarily rest on the divergence in the measurement of core cosmological parameters with varying levels of statistical confidence. These possible statistical tensions may be partially accounted for by systematics in various measurements or cosmological probes but there is also a growing indication of potential new physics beyond the standard model. After reviewing the principal probes used in the measurement of cosmological parameters, as well as potential systematics, we discuss the most promising array of potential new physics that may be observable in upcoming surveys. We also discuss the growing set of novel data analysis approaches that go beyond traditional methods to test physical models. [Abridged]",
+            "authors": [
+                "Eleonora Di Valentino",
+                "Jackson Levi Said",
+                "Adam Riess",
+                "Agnieszka Pollo",
+                "Vivian Poulin",
+                "Adrià Gómez-Valent",
+                "Amanda Weltman",
+                "Antonella Palmese",
+                "Caroline D. Huang",
+                "Carsten van de Bruck",
+                "et al."
+            ],
+            "published": "2025-04-02T12:17:19Z",
+            "updated": "2025-08-04T13:56:55Z",
+            "date": "Aug 2025",
+            "doi": "10.1016/j.dark.2025.101965",
+            "doiUrl": "https://doi.org/10.1016/j.dark.2025.101965",
+            "arxivUrl": "https://arxiv.org/abs/2504.01669v3",
+            "pdfUrl": "https://arxiv.org/pdf/2504.01669v3",
+            "htmlUrl": "https://ar5iv.labs.arxiv.org/html/2504.01669",
+            "figures": [
+                {
+                    "src": "/assets/research/2504.01669/figure-1.png",
+                    "sourceUrl": "https://ar5iv.labs.arxiv.org/html/2504.01669/assets/x2.png",
+                    "caption": "Figure 1 : Summary of $H_{0}$ estimates from different cosmological probes with error bars smaller than $3.5$ $\\,{\\rm km\\,s}^{-1}{\\rm\\,Mpc}^{-1}$ .",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2504.01669/figure-2.png",
+                    "sourceUrl": "https://ar5iv.labs.arxiv.org/html/2504.01669/assets/x3.png",
+                    "caption": "Figure 2 : Summary of $H_{0}$ estimates from all the cosmological probes in this White Paper following the order of the different sections.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2504.01669/figure-3.png",
+                    "sourceUrl": "https://ar5iv.labs.arxiv.org/html/2504.01669/assets/x4.png",
+                    "caption": "Figure 3 : Summary of models proposed to solve the $H_{0}$ tension in this White Paper following the order of the different sections.",
+                    "alt": "Refer to caption"
+                }
+            ],
+            "venue": "Phys. Dark Univ."
+        },
+        {
+            "arxivId": "2503.00636",
+            "arxivVersion": "2503.00636v3",
+            "title": "The Simons Observatory: Science Goals and Forecasts for the Enhanced Large Aperture Telescope",
+            "description": "We describe updated scientific goals for the wide-field, millimeter-wave survey that will be produced by the Simons Observatory (SO). Significant upgrades to the 6-meter SO Large Aperture Telescope (LAT) are expected to be complete by 2028, and will include a doubled mapping speed with 30,000 new detectors and an automated data reduction pipeline. In addition, a new photovoltaic array will supply most of the observatory's power. The LAT survey will cover about 60% of the sky at a regular observing cadence, with five times the angular resolution and ten times the map depth of Planck. The science goals are to: (1) determine the physical conditions in the early universe and constrain the existence of new light particles; (2) measure the integrated distribution of mass, electron pressure, and electron momentum in the late-time universe, and, in combination with optical surveys, determine the neutrino mass and the effects of dark energy via tomographic measurements of the growth of structure at $z < 3$; (3) measure the distribution of electron density and pressure around galaxy groups and clusters, and calibrate the effects of energy input from galaxy formation on the surrounding environment; (4) produce a sample of more than 30,000 galaxy clusters, and more than 100,000 extragalactic millimeter sources, including regularly sampled AGN light-curves, to study these sources and their emission physics; (5) measure the polarized emission from magnetically aligned dust grains in our Galaxy, to study the properties of dust and the role of magnetic fields in star formation; (6) constrain asteroid regoliths, search for Trans-Neptunian Objects, and either detect or eliminate large portions of the phase space in the search for Planet 9; and (7) provide a powerful new window into the transient universe on time scales of minutes to years, concurrent with observations from Rubin of overlapping sky.",
+            "authors": [
+                "The Simons Observatory Collaboration",
+                "M. Abitbol",
+                "I. Abril-Cabezas",
+                "S. Adachi",
+                "P. Ade",
+                "A. E. Adler",
+                "P. Agrawal",
+                "J. Aguirre",
+                "Z. Ahmed",
+                "S. Aiola",
+                "et al."
+            ],
+            "published": "2025-03-01T22:04:43Z",
+            "updated": "2025-08-07T20:54:37Z",
+            "date": "Aug 2025",
+            "doi": "10.48550/arXiv.2503.00636",
+            "doiUrl": "https://doi.org/10.48550/arXiv.2503.00636",
+            "arxivUrl": "https://arxiv.org/abs/2503.00636v3",
+            "pdfUrl": "https://arxiv.org/pdf/2503.00636v3",
+            "htmlUrl": "https://ar5iv.labs.arxiv.org/html/2503.00636",
+            "figures": [
+                {
+                    "src": "/assets/research/2503.00636/figure-1.png",
+                    "sourceUrl": "https://ar5iv.labs.arxiv.org/html/2503.00636/assets/tex/Figures/ASO_Timeline.png",
+                    "caption": "Figure 1 : Timeline of the Simons Observatory. The sensitivity, indicated by the overall vertical extent of each ellipse, approximates the survey-science reach of the different programs. The timing of SO and its broad sky coverage are ideally matched to the Rubin Observatory, DESI (2021-26), Euclid (launched in July 2023), and Roman (due to launch no later than 2027). The 20,000 square degrees of overlapping sky coverage with Rubin is key to achieving the SO science goals. A cutaway of the SO Large Aperture Telescope is shown, along with the Large Aperture Telescope Receiver. The six new optics tubes described in Sec. 2 are represented in orange on the front of the receiver.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2503.00636/figure-2.png",
+                    "sourceUrl": "https://ar5iv.labs.arxiv.org/html/2503.00636/assets/x1.png",
+                    "caption": "Figure 2 : Key CMB cosmology observables that can be derived from the SO LAT sky maps: CMB temperature (TT) and polarization (EE and BB) power spectra. The different colored points with error bars show existing ( Planck and BICEP2/Keck) and forecast ( LiteBIRD and SO) power spectrum measurements from various CMB experiments. The forecast SO noise power spectra here include detector and atmospheric noise, as well as the effects of residual foregrounds after component separation, following the methodology described in Ade et al. ( 2019 ) . Planck data are also assumed to be combined with SO, as indicated in the legend. Small-scale power spectrum measurements from existing ground-based CMB experiments (e.g., ACT, SPT, POLARBEAR) are omitted here for clarity.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2503.00636/figure-3.png",
+                    "sourceUrl": "https://ar5iv.labs.arxiv.org/html/2503.00636/assets/x2.png",
+                    "caption": "Figure 3 : The SO LAT survey (highlighted region with white boundaries) will cover 61% of the sky. This sky coverage overlaps that of the Rubin Observatory and much of DES, DESI, and Euclid , as shown. The background image shows the Planck 857 GHz total intensity map on a logarithmic scale.",
+                    "alt": "Refer to caption"
+                }
+            ],
+            "venue": "JCAP"
+        },
+        {
+            "arxivId": "2405.01621",
+            "arxivVersion": "2405.01621v2",
+            "title": "The Simons Observatory: Combining cross-spectral foreground cleaning with multitracer $B$-mode delensing for improved constraints on inflation",
+            "description": "The Simons Observatory (SO), due to start full science operations in early 2025, aims to set tight constraints on inflationary physics by inferring the tensor-to-scalar ratio $r$ from measurements of CMB polarization $B$-modes. Its nominal design targets a precision $σ(r=0) \\leq 0.003$ without delensing. Achieving this goal and further reducing uncertainties requires the mitigation of other sources of large-scale $B$-modes such as Galactic foregrounds and weak gravitational lensing. We present an analysis pipeline aiming to estimate $r$ by including delensing within a cross-spectral likelihood, and demonstrate it on SO-like simulations. Lensing $B$-modes are synthesised using internal CMB lensing reconstructions as well as Planck-like CIB maps and LSST-like galaxy density maps. This $B$-mode template is then introduced into SO's power-spectrum-based foreground-cleaning algorithm by extending the likelihood function to include all auto- and cross-spectra between the lensing template and the SAT $B$-modes. Within this framework, we demonstrate the equivalence of map-based and cross-spectral delensing and use it to motivate an optimized pixel-weighting scheme for power spectrum estimation. We start by validating our pipeline in the simplistic case of uniform foreground spectral energy distributions (SEDs). In the absence of primordial $B$-modes, $σ(r)$ decreases by 37% as a result of delensing. Tensor modes at the level of $r=0.01$ are successfully detected by our pipeline. Even with more realistic foreground models including spatial variations in the dust and synchrotron spectral properties, we obtain unbiased estimates of $r$ by employing the moment-expansion method. In this case, delensing-related improvements range between 27% and 31%. These results constitute the first realistic assessment of the delensing performance at SO's nominal sensitivity level. (Abridged)",
+            "authors": [
+                "Emilie Hertig",
+                "Kevin Wolz",
+                "Toshiya Namikawa",
+                "Antón Baleato Lizancos",
+                "Susanna Azzoni",
+                "Irene Abril-Cabezas",
+                "David Alonso",
+                "Carlo Baccigalupi",
+                "Erminia Calabrese",
+                "Anthony Challinor",
+                "et al."
+            ],
+            "published": "2024-05-02T17:54:28Z",
+            "updated": "2024-09-10T19:18:58Z",
+            "date": "May 2024",
+            "doi": "10.1103/PhysRevD.110.043532",
+            "doiUrl": "https://doi.org/10.1103/PhysRevD.110.043532",
+            "arxivUrl": "https://arxiv.org/abs/2405.01621v2",
+            "pdfUrl": "https://arxiv.org/pdf/2405.01621v2",
+            "htmlUrl": "https://arxiv.org/html/2405.01621v2",
+            "figures": [
+                {
+                    "src": "/assets/research/2405.01621/figure-1.png",
+                    "sourceUrl": "https://arxiv.org/html/2405.01621v2/x1.png",
+                    "caption": "Figure 1: Normalized hit counts over the areas observed by the LAT (left) and SATs (right) in equatorial coordinates, multiplied by the Planck 70% Galactic mask. Masked pixels are shown in grey. These maps were made using the latest version of the planned SO scanning strategy. Of the pixels observed by the SAT, 96% are also seen by the LAT as a result of using slightly narrower Galactic cuts than in Ref. [ 24 ] to maximize overlap.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2405.01621/figure-2.png",
+                    "sourceUrl": "https://arxiv.org/html/2405.01621v2/x3.png",
+                    "caption": "Figure 2: Flowchart of the three main pipeline stages: lensing template construction; computation of power spectra; and component separation. Inputs are listed in the white boxes. The same CMB realizations are used to generate the LAT and SAT maps, and the Gaussian realisations of external LSS tracers are appropriately correlated with the CMB lensing convergence. Orange boxes represent stages carried out on both the mock data and the 500 fiducial simulations, while the blue-colored operations are only applied to the mock data.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2405.01621/figure-3.png",
+                    "sourceUrl": "https://arxiv.org/html/2405.01621v2/x4.png",
+                    "caption": "Figure 3: Power spectra computed for one realization of SAT $B$ -modes in all frequency channels and the corresponding lensing template, with $D_{l}=l(l+1)C_{l}/2\\pi$ . The input maps include the CMB signal, SAT-like noise at goal/optimistic levels and d0s0 foregrounds. The blue shaded areas represent the $1\\sigma$ standard deviation calculated over 500 simulations with Gaussian foregrounds. The lensing template auto-spectrum and its cross-spectrum with SAT $B$ -modes at $93\\,\\text{GHz}$ are highlighted in the top-right corner.",
+                    "alt": "Refer to caption"
+                }
+            ],
+            "venue": "PRD"
+        },
+        {
+            "arxivId": "2403.05242",
+            "arxivVersion": "2403.05242v3",
+            "title": "The Simons Observatory: impact of bandpass, polarization angle and calibration uncertainties on small-scale power spectrum analysis",
+            "description": "We study the effects due to mismatches in passbands, polarization angles, and temperature and polarization calibrations in the context of the upcoming cosmic microwave background experiment Simons Observatory (SO). Using the SO multi-frequency likelihood, we estimate the bias and the degradation of constraining power in cosmological and astrophysical foreground parameters assuming different levels of knowledge of the instrumental effects. We find that incorrect but reasonable assumptions about the values of all the systematics examined here can have significant effects on cosmological analyses, hence requiring marginalization approaches at the likelihood level. When doing so, we find that the most relevant effect is due to bandpass shifts. When marginalizing over them, the posteriors of parameters describing astrophysical microwave foregrounds (such as radio point sources or dust) get degraded, while cosmological parameters constraints are not significantly affected. Marginalization over polarization angles with up to 0.25$^\\circ$ uncertainty causes an irrelevant bias $\\lesssim 0.05 σ$ in all parameters. Marginalization over calibration factors in polarization broadens the constraints on the effective number of relativistic degrees of freedom $N_\\mathrm{eff}$ by a factor 1.2, interpreted here as a proxy parameter for non standard model physics targeted by high-resolution CMB measurements.",
+            "authors": [
+                "S. Giardiello",
+                "M. Gerbino",
+                "L. Pagano",
+                "D. Alonso",
+                "B. Beringue",
+                "B. Bolliet",
+                "E. Calabrese",
+                "G. Coppi",
+                "J. Errard",
+                "G. Fabbian",
+                "et al."
+            ],
+            "published": "2024-03-08T12:04:40Z",
+            "updated": "2024-09-02T14:26:48Z",
+            "date": "Mar 2024",
+            "doi": "10.1088/1475-7516/2024/09/008",
+            "doiUrl": "https://doi.org/10.1088/1475-7516/2024/09/008",
+            "arxivUrl": "https://arxiv.org/abs/2403.05242v3",
+            "pdfUrl": "https://arxiv.org/pdf/2403.05242v3",
+            "htmlUrl": "https://arxiv.org/html/2403.05242v3",
+            "figures": [
+                {
+                    "src": "/assets/research/2403.05242/figure-1.png",
+                    "sourceUrl": "https://arxiv.org/html/2403.05242v3/x1.png",
+                    "caption": "Figure 1 : Difference in the TT multi-frequency power spectra in units of $\\sigma_{D_{\\ell}}$ when introducing a bandpass shift. We plot residual spectra for $D^{\\mathrm{TT}}_{\\ell,\\mathrm{CMB}}$ (in orange) and $D^{\\mathrm{TT},\\nu_{1}\\nu_{2}}_{\\ell,\\mathrm{FG}}$ (in red). Differences are computed from the bestfit parameters of two MCMC runs, assuming $\\Lambda$ CDM: the ideal case without systematics, and the case where we marginalize over bandpass shifts with flat priors (more details in Section 5 and Appendix B ). Therefore, the shape of the residuals is due to both the impact of the systematics and to the interplay of systematics, cosmological and foreground parameters in the joint fit. As expected, due to the frequency-dependent nature of the passband shift, residual for the power spectra of the foreground components are much more relevant. We also plot in grey the $\\Delta D_{\\ell,\\text{CMB}}$ / $\\sigma_{D_{\\ell}}$ , where the difference is computed between the bestfit of the ideal case without systematics and the same bestfit but with $N_{\\rm eff}$ fixed to $3.144$ (corresponding to a $2\\sigma$ shift with respect to the expected value $N_{\\rm eff}=3.044$ in $\\Lambda$ CDM ). Note the similarity in the shapes of the orange and grey curves (see details in the main text). In all cases, dashed lines correspond to a negative difference.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2403.05242/figure-2.png",
+                    "sourceUrl": "https://arxiv.org/html/2403.05242v3/x2.png",
+                    "caption": "Figure 2 : Same as Fig. 1 , but highlighting the effect of non-ideal polarization angles on EE power spectra. The spectra affected by systematics are computed from the bestfit parameters of a MCMC run where we marginalize over polarization angles with flat priors. We plot residual spectra for $D^{\\mathrm{EE}}_{\\ell,\\mathrm{CMB}}$ in light green and $D^{\\mathrm{EE},\\nu_{1}\\nu_{2}}_{\\ell,\\mathrm{FG}}$ in dark green. The effect of non-ideal polarization angles produces a more prominent impact on the CMB power spectrum. Note that the shape of the CMB residuals is similar to the difference arising from a $2\\sigma$ change in $N_{\\rm eff}$ with respect to the standard expected value (grey curve).",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2403.05242/figure-3.png",
+                    "sourceUrl": "https://arxiv.org/html/2403.05242v3/x3.png",
+                    "caption": "Figure 3 : Same as Fig. 1 , but highlighting the effect on the EE power spectra of non-ideal calibrations. The spectra affected by systematics are computed from the bestfit parameters of a MCMC run where we marginalize over polarization efficiencies with flat priors and over calibrations per channel with a Gaussian prior. We plot residual spectra for $D^{\\mathrm{EE}}_{\\ell,\\mathrm{CMB}}$ in cyan and $D^{\\mathrm{EE},\\nu_{i}\\nu_{j}}_{\\ell,\\mathrm{FG}}$ in blue. Note that the shape of the CMB residuals is similar to the difference arising from a $2\\sigma$ change in $N_{\\rm eff}$ with respect to the standard expected value (grey curve).",
+                    "alt": "Refer to caption"
+                }
+            ],
+            "venue": "JCAP"
+        },
+        {
+            "arxivId": "2312.05184",
+            "arxivVersion": "2312.05184v1",
+            "title": "LiteBIRD Science Goals and Forecasts: A full-sky measurement of gravitational lensing of the CMB",
+            "description": "We explore the capability of measuring lensing signals in $LiteBIRD$ full-sky polarization maps. With a $30$ arcmin beam width and an impressively low polarization noise of $2.16\\,μ$K-arcmin, $LiteBIRD$ will be able to measure the full-sky polarization of the cosmic microwave background (CMB) very precisely. This unique sensitivity also enables the reconstruction of a nearly full-sky lensing map using only polarization data, even considering its limited capability to capture small-scale CMB anisotropies. In this paper, we investigate the ability to construct a full-sky lensing measurement in the presence of Galactic foregrounds, finding that several possible biases from Galactic foregrounds should be negligible after component separation by harmonic-space internal linear combination. We find that the signal-to-noise ratio of the lensing is approximately $40$ using only polarization data measured over $90\\%$ of the sky. This achievement is comparable to $Planck$'s recent lensing measurement with both temperature and polarization and represents a four-fold improvement over $Planck$'s polarization-only lensing measurement. The $LiteBIRD$ lensing map will complement the $Planck$ lensing map and provide several opportunities for cross-correlation science, especially in the northern hemisphere.",
+            "authors": [],
+            "published": "2023-12-08T17:10:03Z",
+            "updated": "2023-12-08T17:10:03Z",
+            "date": "May 2024",
+            "doi": "10.1088/1475-7516/2024/06/009",
+            "doiUrl": "https://doi.org/10.1088/1475-7516/2024/06/009",
+            "arxivUrl": "https://arxiv.org/abs/2312.05184v1",
+            "pdfUrl": "https://arxiv.org/pdf/2312.05184v1",
+            "htmlUrl": "https://arxiv.org/html/2312.05184v1",
+            "figures": [
+                {
+                    "src": "/assets/research/2312.05184/figure-1.png",
+                    "sourceUrl": "https://arxiv.org/html/2312.05184v1/x1.png",
+                    "caption": "Figure 1 : Foreground residuals and noise presented in our component-separated polarization maps. The solid black line represents the signal. The left and right panels display the $E$ - and $B$ -mode residuals, respectively. We illustrate the residuals for two foreground models, s0d0 (red) and s1d1 (green). Note that the green curves deviate significantly from the assumed model during component separation, substantially increasing residuals. Both spectra are computed from $500$ full-sky simulations.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2312.05184/figure-2.png",
+                    "sourceUrl": "https://arxiv.org/html/2312.05184v1/x2.png",
+                    "caption": "Figure 2 : Lensing convergence map, which is defined in harmonic space as $\\kappa_{LM}\\equiv L(L+1)\\phi_{LM}/2$ in harmonic space, obtained from one realization of the SET1 s1d1 simulation. The map contains multipole of $2 Left : The input map used to remap the primary CMB. Right : The Wiener-filtered reconstructed map. The map resolution is $5$ arcmin-pixel ${}^{-1}$ .",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2312.05184/figure-3.png",
+                    "sourceUrl": "https://arxiv.org/html/2312.05184v1/x3.png",
+                    "caption": "Figure 3 : Binned angular power spectrum of the lensing potential shown in the black with error bars. The mean and standard deviation are obtained from $400$ realizations of the SET1 simulation. The red and green solid lines are the MCN0 and MCN1 biases, respectively. The mean field is shown with a blue line. We use the s1d1 model for this analysis. We show the power spectrum up to $L=600$ since the power spectrum at $L>600$ is significantly noise-dominant.",
+                    "alt": "Refer to caption"
+                }
+            ],
+            "venue": "JCAP"
+        },
+        {
+            "arxivId": "2312.05194",
+            "arxivVersion": "2312.05194v1",
+            "title": "LiteBIRD Science Goals and Forecasts: Improving Sensitivity to Inflationary Gravitational Waves with Multitracer Delensing",
+            "description": "We estimate the efficiency of mitigating the lensing $B$-mode polarization, the so-called delensing, for the $LiteBIRD$ experiment with multiple external data sets of lensing-mass tracers. The current best bound on the tensor-to-scalar ratio, $r$, is limited by lensing rather than Galactic foregrounds. Delensing will be a critical step to improve sensitivity to $r$ as measurements of $r$ become more and more limited by lensing. In this paper, we extend the analysis of the recent $LiteBIRD$ forecast paper to include multiple mass tracers, i.e., the CMB lensing maps from $LiteBIRD$ and CMB-S4-like experiment, cosmic infrared background, and galaxy number density from $Euclid$- and LSST-like survey. We find that multi-tracer delensing will further improve the constraint on $r$ by about $20\\%$. In $LiteBIRD$, the residual Galactic foregrounds also significantly contribute to uncertainties of the $B$-modes, and delensing becomes more important if the residual foregrounds are further reduced by an improved component separation method.",
+            "authors": [],
+            "published": "2023-12-08T17:31:24Z",
+            "updated": "2023-12-08T17:31:24Z",
+            "date": "Feb 2024",
+            "doi": "10.1088/1475-7516/2024/06/010",
+            "doiUrl": "https://doi.org/10.1088/1475-7516/2024/06/010",
+            "arxivUrl": "https://arxiv.org/abs/2312.05194v1",
+            "pdfUrl": "https://arxiv.org/pdf/2312.05194v1",
+            "htmlUrl": "https://arxiv.org/html/2312.05194v1",
+            "figures": [
+                {
+                    "src": "/assets/research/2312.05194/figure-1.png",
+                    "sourceUrl": "https://arxiv.org/html/2312.05194v1/x1.png",
+                    "caption": "Figure 1 : Kernel function for CMB lensing, CIB, Euclid , and LSST galaxies (see text in Sec. 2.2.5 for the definitions). The different colors represent different redshift bins for galaxy surveys defined in Sec. 2.2.3 . The function is normalized so that the peak is unity.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2312.05194/figure-2.png",
+                    "sourceUrl": "https://arxiv.org/html/2312.05194v1/x2.png",
+                    "caption": "Figure 2 : Left : Correlation coefficients between the ideal full-sky CMB lensing and observed lensing mass-tracer maps obtained by combining several of the LiteBIRD lensing maps with the CIB, galaxy number density from Euclid and LSST, and CMB-S4 lensing maps. Right : Same as the left panel but for the correlation coefficients for each external data set taken separately, i.e., the CIB, galaxies from Euclid and LSST, and CMB-S4.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2312.05194/figure-3.png",
+                    "sourceUrl": "https://arxiv.org/html/2312.05194v1/x4.png",
+                    "caption": "Figure 3 : Survey windows for each observation in Galactic coordinate used in our analysis.",
+                    "alt": "Refer to caption"
+                }
+            ],
+            "venue": "JCAP"
+        },
+        {
+            "arxivId": "2203.02495",
+            "arxivVersion": "2203.02495v2",
+            "title": "Improved upper limit on degree-scale CMB B-mode polarization power from the 670 square-degree POLARBEAR survey",
+            "description": "We report an improved measurement of the degree-scale cosmic microwave background $B$-mode angular-power spectrum over 670 square-degree sky area at 150 GHz with POLARBEAR. In the original analysis of the data, errors in the angle measurement of the continuously rotating half-wave plate, a polarization modulator, caused significant data loss. By introducing an angle-correction algorithm, the data volume is increased by a factor of 1.8. We report a new analysis using the larger data set. We find the measured $B$-mode spectrum is consistent with the $Λ$CDM model with Galactic dust foregrounds. We estimate the contamination of the foreground by cross-correlating our data and Planck 143, 217, and 353 GHz measurements, where its spectrum is modeled as a power law in angular scale and a modified blackbody in frequency. We place an upper limit on the tensor-to-scalar ratio $r$ < 0.33 at 95% confidence level after marginalizing over the foreground parameters.",
+            "authors": [
+                "The POLARBEAR Collaboration",
+                "S. Adachi",
+                "T. Adkins",
+                "M. A. O. Aguilar Faúndez",
+                "K. S. Arnold",
+                "C. Baccigalupi",
+                "D. Barron",
+                "S. Chapman",
+                "K. Cheung",
+                "Y. Chinone",
+                "et al."
+            ],
+            "published": "2022-03-04T18:50:54Z",
+            "updated": "2022-06-15T21:21:44Z",
+            "date": "Jan 2022",
+            "doi": "10.3847/1538-4357/ac6809",
+            "doiUrl": "https://doi.org/10.3847/1538-4357/ac6809",
+            "arxivUrl": "https://arxiv.org/abs/2203.02495v2",
+            "pdfUrl": "https://arxiv.org/pdf/2203.02495v2",
+            "htmlUrl": "https://ar5iv.labs.arxiv.org/html/2203.02495",
+            "figures": [
+                {
+                    "src": "/assets/research/2203.02495/figure-1.png",
+                    "sourceUrl": "https://ar5iv.labs.arxiv.org/html/2203.02495/assets/x1.png",
+                    "caption": "Figure 1: Example of encoder data with a wrong count and corresponding detector signal. The horizontal axis is the rotation count of the HWP, which takes $0.5\\,\\mathrm{s}$ per rotation. The top panel shows HWP encoder data subtracted by the regular drift, $\\omega t$ . The blue points are raw encoder counts sampled at $191\\,\\mathrm{Hz}$ . The uniform pattern is quantization noise due to the resolution of the encoder plate by $0\\fdg 5$ . The blue line shows the interpolated angle using a timestamp. The wavy pattern on it is the actual rotation jitter of the HWP. In the third rotation, it jumps by $0\\fdg 5$ due to an error count and is reset by the indexing signal. The orange line shows the correction in PB20 , which linearly interpolates the jump. The green points show the new method, in which we fix the error at the encoder count level and then apply timestamp interpolation. The green line is the result, which keeps the actual HWP angle jitter. The bottom panel shows the detector signal of Stokes $U$ component in the instrumental coordinates. PB20 data, the orange line, show a glitch, which is consistent with the expectation by Equation 3 , the black line. In the new data, the green line, the HWPSS is subtracted correctly, and the glitch disappears.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2203.02495/figure-2.png",
+                    "sourceUrl": "https://ar5iv.labs.arxiv.org/html/2203.02495/assets/x2.png",
+                    "caption": "Figure 2: Distribution of kurtosis computed for the common mode of the detector timestream. The blue line shows PB20 data, and the red line shows new one with the encoder correction. The dashed lines are upper and lower thresholds for the data selection. When the timestream follows the normal distribution, the kurtosis becomes 0. Glitches make the kurtosis $>0$ as in the PB20 data. Kurtosis $<0$ is due to residual low-frequency noise.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/2203.02495/figure-3.png",
+                    "sourceUrl": "https://ar5iv.labs.arxiv.org/html/2203.02495/assets/x3.png",
+                    "caption": "Figure 3: Schematic view of the steps in our power spectrum estimation pipeline. Each box represents an analysis procedure, input data, or its product. The arrows show the flow of the pipeline, where the dotted arrows show the flow for the null test especially. All the details of the pipeline are described in PB20 . The main change in this work is the update of the input Polarbear data to the new data set, as described in Section 2 . The other procedures of the pipeline are almost the same as in PB20 , except for the minor change in the overall calibration, as described in the text.",
+                    "alt": "Refer to caption"
+                }
+            ],
+            "venue": "ApJ"
+        },
+        {
+            "arxivId": "1911.07824",
+            "arxivVersion": "1911.07824v1",
+            "title": "Cosmological Simulation of Galaxy Groups and Clusters-I: Global Effect of Feedback from Active Galactic Nuclei",
+            "description": "In this study we quantify the properties of the gas and dark matter around active galactic nuclei (AGN) in simulated galaxy groups and clusters and analyze the effect of AGN feedback on the surrounding intra-cluster (group) medium. Our results suggest downsizing of AGN luminosity with host halo mass, supporting the results obtained from clustering studies of AGN. By examining the temperature and density distribution of the gas in the vicinity of AGN we show that due to feedback from the central engine, the gas gets displaced from the centre of the group/cluster resulting in a reduction of the density but an enhancement of temperature. We show that these effects are pronounced at both high and low redshifts and propose new observables to study the effect of feedback in higher redshift galaxies. We also show that the average stellar mass is decreased in halos in the presence of AGN feedback confirming claims from previous studies. Our work for the first time uses a fully cosmological-hydrodynamic simulation to evaluate the global effects of AGN feedback on their host dark matter halos as well as galaxies at scales of galaxy groups and clusters.",
+            "authors": [
+                "Rudrani Kar Chowdhury",
+                "Suchetana Chatterjee",
+                "Anto . I. Lonappan",
+                "Nishikanta Khandai",
+                "Tiziana DiMatteo"
+            ],
+            "published": "2019-11-18T18:38:23Z",
+            "updated": "2019-11-18T18:38:23Z",
+            "date": "Jan 2020",
+            "doi": "10.3847/1538-4357/ab5b96",
+            "doiUrl": "https://doi.org/10.3847/1538-4357/ab5b96",
+            "arxivUrl": "https://arxiv.org/abs/1911.07824v1",
+            "pdfUrl": "https://arxiv.org/pdf/1911.07824v1",
+            "htmlUrl": "https://ar5iv.labs.arxiv.org/html/1911.07824",
+            "figures": [
+                {
+                    "src": "/assets/research/1911.07824/figure-1.png",
+                    "sourceUrl": "https://ar5iv.labs.arxiv.org/html/1911.07824/assets/x1.png",
+                    "caption": "Figure 1.— Left panel : $\\rm M_{halo}-M_{BH}$ relation in the K15 simulation at $z=1$ and at $z=0.1$ . Black dots and magenta stars show the central and satellite black holes respectively at $z=1$ , while red triangles and blue diamonds represent the central and satellite black holes respectively at $z=0.1$ . We do not see any redshift dependance of these correlations. Central BH mass increases steeply with their host halo mass while the satellite BH mass increases very slightly with the halo mass and then gets saturated at the higher host halo mass range. Right panel : $\\rm M_{halo}-L_{bol}$ relation in the K15 simulation at $z=1$ and $z=0.1$ . Color scheme is same as the left panel. Clearly the luminosities of the satellite black holes decrease in the higher halo mass bins for both redshifts. We propose that this downsizing effect is due to AGN feedback. See §3 and §4 for more discussions.",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/1911.07824/figure-2.png",
+                    "sourceUrl": "https://ar5iv.labs.arxiv.org/html/1911.07824/assets/x3.png",
+                    "caption": "Figure 2.— Conditional probability distribution of the $\\rm M_{BH}-L_{bol}$ correlations in the simulation at $z=1$ . Blue diamonds and yellow circles show the central and satellite black holes repectively. Central AGN luminosity remains fairly constant with $\\rm M_{BH}$ in the first two halo mass bins, then increasing slightly in the higher halo mass scales. However, upto a mass scale of $\\approx 10^{13.2}h^{-1}$ M ⊙ , luminosity of the satellite AGN remains fairly constant. Above this mass scale there is a spread in the distribution of satellite AGN luminosities while the luminosities are typically low at the highest mass bin. The results are discussed in §3 and §4",
+                    "alt": "Refer to caption"
+                },
+                {
+                    "src": "/assets/research/1911.07824/figure-3.png",
+                    "sourceUrl": "https://ar5iv.labs.arxiv.org/html/1911.07824/assets/x4.png",
+                    "caption": "Figure 3.— Conditional distribution of the $\\rm M_{BH}-L_{bol}$ correlations in the simulation at $z=0.1$ . Blue diamonds and yellow circles represent the central and satellite AGN respectively. Luminosity of the central AGN slighltly increases with $\\rm M_{BH}$ , while there is a wide spread in the distribution of satellite AGN luminosities with the very low luminosity AGN in the high mass bins. The results are discussed in §3 and §4",
+                    "alt": "Refer to caption"
+                }
+            ],
+            "venue": "ApJ"
+        },
+        {
+            "arxivId": "1707.00603",
+            "arxivVersion": "1707.00603v2",
+            "title": "Bayesian Evidences for Dark Energy models in light of current obsevational data",
+            "description": "We do a comprehensive study of the Bayesian evidences for a large number of dark energy models using a combination of latest cosmological data from SNIa, CMB, BAO, Strong lensing time delay, Growth measurements, measurements of Hubble parameter at different redshifts and measurements of angular diameter distance by Megamaser Cosmology Project . We consider a variety of scalar field models with different potentials as well as different parametrisations for the dark energy equation of state. Among 21 models that we consider in our study, we do not find strong evidences in favour of any evolving dark energy model compared to $Λ$CDM. For the evolving dark energy models, we show that purely non-phantom models have much better evidences compared to those models that allow both phantom and non-phantom behaviours. Canonical scalar field with exponential and tachyon field with square potential have highest evidences among all the models considered in this work. We also show that a combination of low redshift measurements decisively favours an accelerating $Λ$CDM model compared to a non-accelerating power law model.",
+            "authors": [
+                "Anto. I. Lonappan",
+                "Sumit Kumar",
+                "Ruchika",
+                "Bikash R. Dinda",
+                "Anjan A Sen"
+            ],
+            "published": "2017-07-03T15:43:18Z",
+            "updated": "2017-11-23T11:44:44Z",
+            "date": "Feb 2018",
+            "doi": "10.1103/PhysRevD.97.043524",
+            "doiUrl": "https://doi.org/10.1103/PhysRevD.97.043524",
+            "arxivUrl": "https://arxiv.org/abs/1707.00603v2",
+            "pdfUrl": "https://arxiv.org/pdf/1707.00603v2",
+            "htmlUrl": "https://ar5iv.labs.arxiv.org/html/1707.00603",
+            "figures": [
+                {
+                    "src": "/assets/research/1707.00603/figure-1.png",
+                    "sourceUrl": "https://ar5iv.labs.arxiv.org/html/1707.00603/assets/x1.png",
+                    "caption": "Figure 1: $\\Delta\\ln{\\mathcal{Z}}$ for different models compared to $\\Lambda$ CDM for four combinations of observational data. The horizontal line represents the $\\Lambda$ CDM model. Models above this line have better evidences than $\\Lambda$ CDM whereas models below this have lower evidences than $\\Lambda$ CDM. The blue, yellow and green points represent models with insignificant, significant and strong evidence compared to $\\Lambda$ CDM according to Jeffrey’s scale given in Table II.",
+                    "alt": "Refer to caption"
+                }
+            ],
+            "venue": "Phys. Rev. D"
+        }
+    ]
+}

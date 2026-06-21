@@ -2,6 +2,12 @@
 
 This folder is the standalone static website for https://antolonappan.me/.
 
+## Source data
+
+- `data/research/config.json` is the editable arXiv/publication list, Google Scholar profile URL, manual venue labels, DOI overrides, and code links.
+- `data/research/generated.json` is generated from arXiv metadata and arXiv/ar5iv figures.
+- `data/about.json` is the editable profile/about copy.
+
 ## Pages
 
 - `/`
@@ -11,32 +17,42 @@ This folder is the standalone static website for https://antolonappan.me/.
 
 ## Regenerate
 
-From the project root:
+From this repository root:
 
 ```bash
-node webpage/build.js
+npm install
+npm run sync:research
+npm run sync:scholar
+npm run build
+npm run validate
 ```
 
 The generator reads:
 
-- `components/pages/research/config.json`
-- `components/pages/research/generated.json`
-- `components/pages/about/data.json`
-- `public/assets/research`
+- `data/research/config.json`
+- `data/research/generated.json`
+- `data/about.json`
+- `assets/research`
 
 When adding a new arXiv paper, run:
 
 ```bash
 npm run sync:research
-node webpage/build.js
+npm run build
 ```
+
+## Automation
+
+GitHub Actions keeps the generated site current:
+
+- `Build` runs on pushes and pull requests and fails if generated files are stale.
+- `Sync Research Site` runs daily, can be triggered manually, and runs after source-data changes on `main`. It updates arXiv metadata, downloads figures, checks Google Scholar citations/h-index/i10-index, rebuilds the site, validates it, and commits generated changes back to `main` when anything changed.
 
 ## Preview
 
 Serve the folder:
 
 ```bash
-cd webpage
 python3 -m http.server 4173
 ```
 

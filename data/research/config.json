@@ -1,0 +1,152 @@
+{
+    "profile": {
+        "scholarUrl": "https://scholar.google.com/citations?hl=en&user=tz_hyHUAAAAJ",
+        "scholarStats": [
+            {
+                "label": "Citations",
+                "value": "888"
+            },
+            {
+                "label": "h-index",
+                "value": "13"
+            },
+            {
+                "label": "i10-index",
+                "value": "14"
+            }
+        ],
+        "statsUpdated": "June 2026",
+        "statsUpdatedAt": "2026-06-21T01:31:44.802Z"
+    },
+    "interests": [
+        "Cosmic Microwave Background polarization",
+        "Cosmic birefringence",
+        "CMB gravitational lensing",
+        "B-mode delensing",
+        "Observational cosmology",
+        "Statistical cosmological inference"
+    ],
+    "defaultFigureLimit": 3,
+    "papers": [
+        {
+            "arxivId": "2606.19337",
+            "venue": "PRD",
+            "date": "June 2026",
+            "doi": "",
+            "code": [
+                {
+                    "label": "cosmic_strings",
+                    "url": "https://github.com/antolonappan/cosmic_strings",
+                    "description": "Theoretical power spectra of curl lensing from cosmic strings."
+                }
+            ]
+        },
+        {
+            "arxivId": "2504.13154",
+            "venue": "PRD",
+            "date": "Aug 2025",
+            "doi": "10.1103/yxmh-rh9z"
+        },
+        {
+            "arxivId": "2503.04708",
+            "venue": "JCAP",
+            "date": "May 2025",
+            "doi": "10.1088/1475-7516/2025/07/009",
+            "code": [
+                {
+                    "label": "DELL",
+                    "url": "https://github.com/antolonappan/dell",
+                    "description": "Delensing, CMB lensing reconstruction, foreground cleaning, and CMB-S4/LiteBIRD analysis utilities."
+                }
+            ]
+        },
+        {
+            "arxivId": "2507.22618",
+            "venue": "JCAP",
+            "date": "Aug 2025",
+            "doi": "10.48550/arXiv.2507.22618"
+        },
+        {
+            "arxivId": "2504.01669",
+            "venue": "Phys. Dark Univ.",
+            "date": "Aug 2025",
+            "doi": "10.1016/j.dark.2025.101965"
+        },
+        {
+            "arxivId": "2503.00636",
+            "venue": "JCAP",
+            "date": "Aug 2025",
+            "doi": "10.48550/arXiv.2503.00636"
+        },
+        {
+            "arxivId": "2405.01621",
+            "venue": "PRD",
+            "date": "May 2024",
+            "doi": "10.1103/PhysRevD.110.043532"
+        },
+        {
+            "arxivId": "2403.05242",
+            "venue": "JCAP",
+            "date": "Mar 2024",
+            "doi": "10.1088/1475-7516/2024/09/008"
+        },
+        {
+            "arxivId": "2312.05184",
+            "venue": "JCAP",
+            "date": "May 2024",
+            "doi": "10.1088/1475-7516/2024/06/009"
+        },
+        {
+            "arxivId": "2312.05194",
+            "venue": "JCAP",
+            "date": "Feb 2024",
+            "doi": "10.1088/1475-7516/2024/06/010",
+            "code": [
+                {
+                    "label": "S4BIRD",
+                    "url": "https://github.com/antolonappan/s4bird",
+                    "description": "Pipeline for LiteBIRD delensing forecasts, quadratic estimators, template delensing, pure B-mode calculations, and likelihood analysis."
+                }
+            ]
+        },
+        {
+            "arxivId": "2203.02495",
+            "venue": "ApJ",
+            "date": "Jan 2022",
+            "doi": "10.3847/1538-4357/ac6809",
+            "code": [
+                {
+                    "label": "POLARBEAR LargePatch",
+                    "url": "https://github.com/PolarbearEU/LargePatch_reanalysis",
+                    "description": "Likelihood and parameter-estimation code for the POLARBEAR LargePatch reanalysis."
+                }
+            ]
+        },
+        {
+            "arxivId": "1911.07824",
+            "venue": "ApJ",
+            "date": "Jan 2020",
+            "doi": "10.3847/1538-4357/ab5b96",
+            "code": [
+                {
+                    "label": "ABE-I",
+                    "url": "https://github.com/antolonappan/ABE-I",
+                    "description": "Analysis tools for studying supermassive black holes, host galaxies, and AGN feedback in MassiveBlack-II simulation snapshots."
+                }
+            ]
+        },
+        {
+            "arxivId": "1707.00603",
+            "venue": "Phys. Rev. D",
+            "date": "Feb 2018",
+            "doi": "10.1103/PhysRevD.97.043524",
+            "code": [
+                {
+                    "label": "COSMOPASS",
+                    "url": "https://github.com/antolonappan/cosmopass",
+                    "description": "Cosmological-model calculations for dark-energy parametrizations and scalar-field models, with sampling integrations."
+                }
+            ]
+        }
+    ]
+}

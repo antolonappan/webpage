@@ -4,16 +4,25 @@ const { execFileSync } = require("child_process");
 const katex = require("katex");
 
 const outDir = __dirname;
-const rootDir = path.resolve(outDir, "..");
-const config = require(path.join(rootDir, "components/pages/research/config.json"));
-const generated = require(path.join(rootDir, "components/pages/research/generated.json"));
-const about = require(path.join(rootDir, "components/pages/about/data.json"));
+const rootDir = __dirname;
+const config = require(path.join(rootDir, "data/research/config.json"));
+const generated = require(path.join(rootDir, "data/research/generated.json"));
+const about = require(path.join(rootDir, "data/about.json"));
 
 const SITE_URL = "https://antolonappan.me";
 const SITE_TITLE = "Anto Idicherian Lonappan | CMB Cosmology Research";
 const SITE_DESCRIPTION = "Research profile of Anto Idicherian Lonappan, Postdoctoral Fellow at UC San Diego, working on CMB polarization, gravitational lensing, cosmic birefringence, and precision cosmology.";
 const THEME_COLOR = "#275f9f";
-const UPDATED = new Date(generated.generatedAt || Date.now());
+const parseDateValue = (value) => {
+    const time = value ? Date.parse(value) : Number.NaN;
+    return Number.isNaN(time) ? 0 : time;
+};
+const GENERATED_UPDATED = new Date(generated.generatedAt || Date.now());
+const updatedTimes = [
+    parseDateValue(generated.generatedAt),
+    parseDateValue(config.profile.statsUpdatedAt)
+].filter(Boolean);
+const UPDATED = new Date(updatedTimes.length ? Math.max(...updatedTimes) : Date.now());
 const CAN_CONVERT_WEBP = (() => {
     try {
         execFileSync("which", ["cwebp"], { stdio: "ignore" });
@@ -208,12 +217,15 @@ const pictureMarkup = ({ src, alt, className = "", loading = "lazy", decoding = 
         fetchpriority ? `fetchpriority="${escapeAttribute(fetchpriority)}"` : ""
     ].filter(Boolean).join(" ");
 
-    if (!CAN_CONVERT_WEBP || !fallback.match(/\.(png|jpe?g)$/i)) {
+    const webpFallback = webpAssetPath(src);
+    const hasWebpVariant = fs.existsSync(path.join(outDir, webpFallback.replace(/^\//, "")));
+
+    if ((!CAN_CONVERT_WEBP && !hasWebpVariant) || !fallback.match(/\.(png|jpe?g)$/i)) {
         return `<img ${attributes}>`;
     }
 
     return `<picture${className === "hero-picture" ? " class=\"hero-picture\"" : ""}>
-                            <source srcset="${escapeAttribute(webpAssetPath(src))}" type="image/webp">
+                            <source srcset="${escapeAttribute(webpFallback)}" type="image/webp">
                             <img ${attributes}>
                         </picture>`;
 };
@@ -223,7 +235,7 @@ const formatUpdated = new Intl.DateTimeFormat("en", {
     day: "numeric",
     year: "numeric",
     timeZone: "UTC"
-}).format(UPDATED);
+}).format(GENERATED_UPDATED);
 
 const publicationStatsMarkup = config.profile.scholarStats.map((stat) => `
                     <div class="publication-stat">
@@ -1608,7 +1620,7 @@ Then open \`http://localhost:4173\`.
 
 const write = (file, contents) => {
     ensureDir(path.dirname(file));
-    fs.writeFileSync(file, contents);
+    fs.writeFileSync(file, typeof contents === "string" ? contents.replace(/[ \t]+$/gm, "") : contents);
 };
 
 const optimizeJpegIfPossible = (file, maxSize) => {
@@ -1647,8 +1659,6 @@ const walkFiles = (dir) => {
 
 const main = () => {
     const assetsDir = path.join(outDir, "assets");
-    const existingCmbPath = path.join(assetsDir, "images/cmb.jpg");
-    const preservedCmb = fs.existsSync(existingCmbPath) ? fs.readFileSync(existingCmbPath) : null;
 
     ensureDir(outDir);
     ensureDir(assetsDir);
@@ -1658,27 +1668,23 @@ const main = () => {
     fs.rmSync(path.join(outDir, "contact"), { recursive: true, force: true });
     fs.rmSync(path.join(assetsDir, "css"), { recursive: true, force: true });
     fs.rmSync(path.join(assetsDir, "js"), { recursive: true, force: true });
-    fs.rmSync(path.join(assetsDir, "images"), { recursive: true, force: true });
-    fs.rmSync(path.join(assetsDir, "files"), { recursive: true, force: true });
 
+    ensureDir(path.join(assetsDir, "css"));
+    ensureDir(path.join(assetsDir, "js"));
     ensureDir(path.join(assetsDir, "images"));
     ensureDir(path.join(assetsDir, "files"));
+    ensureDir(path.join(assetsDir, "research"));
+    ensureDir(path.join(assetsDir, "vendor/katex"));
 
-    fs.copyFileSync(path.join(rootDir, "public/assets/img/anto.jpg"), path.join(assetsDir, "images/anto.jpg"));
-    if (preservedCmb) {
-        fs.writeFileSync(path.join(assetsDir, "images/cmb.jpg"), preservedCmb);
-    }
-    fs.copyFileSync(path.join(rootDir, "public/assets/files/Anto.pdf"), path.join(assetsDir, "files/Anto.pdf"));
     optimizeJpegIfPossible(path.join(assetsDir, "images/anto.jpg"), 1200);
-
-    copyDir(path.join(rootDir, "public/assets/research"), path.join(assetsDir, "research"));
-    copyDir(path.join(rootDir, "public/favicon"), path.join(outDir, "favicon"));
     copyDir(path.join(rootDir, "node_modules/katex/dist/fonts"), path.join(assetsDir, "vendor/katex/fonts"));
-
     walkFiles(path.join(assetsDir, "images")).forEach(createWebpIfPossible);
     walkFiles(path.join(assetsDir, "research")).forEach(createWebpIfPossible);
 
-    write(path.join(assetsDir, "vendor/katex/katex.min.css"), fs.readFileSync(path.join(rootDir, "node_modules/katex/dist/katex.min.css"), "utf8"));
+    const katexCss = path.join(rootDir, "node_modules/katex/dist/katex.min.css");
+    if (fs.existsSync(katexCss)) {
+        write(path.join(assetsDir, "vendor/katex/katex.min.css"), fs.readFileSync(katexCss, "utf8"));
+    }
     write(path.join(assetsDir, "css/styles.css"), css);
     write(path.join(assetsDir, "js/app.js"), js);
 
@@ -1689,7 +1695,6 @@ const main = () => {
     write(path.join(outDir, "robots.txt"), robots);
     write(path.join(outDir, "sitemap.xml"), multiPageSitemap);
     write(path.join(outDir, "site.webmanifest"), `${JSON.stringify(manifest, null, 2)}\n`);
-    write(path.join(outDir, "README.md"), readme);
 
     console.log(`Built webpage with ${papers.length} papers across ${outputPages.length} pages in ${path.relative(rootDir, outDir)}`);
 };
