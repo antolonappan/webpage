@@ -1,0 +1,21 @@
+{
+  "name": "Anto Idicherian Lonappan",
+  "short_name": "Anto Lonappan",
+  "description": "Research profile of Anto Idicherian Lonappan, Postdoctoral Fellow at UC San Diego, working on CMB polarization, gravitational lensing, cosmic birefringence, and precision cosmology.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#275f9f",
+  "icons": [
+    {
+      "src": "/favicon/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
