@@ -3,7 +3,7 @@ name: Sync Research Site
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 9 * * *"
+    - cron: "17 9 1 * *"
   push:
     branches:
       - main
@@ -48,6 +48,8 @@ jobs:
         run: npm run sync:research
 
       - name: Sync Google Scholar metrics
+        env:
+          ALLOW_SCHOLAR_FAILURE: "1"
         run: npm run sync:scholar
 
       - name: Build site

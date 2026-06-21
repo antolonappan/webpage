@@ -117,6 +117,14 @@ const main = async () => {
 };
 
 main().catch((error) => {
-    console.error(error.message || error);
+    const message = error.message || String(error);
+
+    if (process.env.ALLOW_SCHOLAR_FAILURE === "1") {
+        console.warn(`Google Scholar metrics sync skipped: ${message}`);
+        console.warn("Keeping checked-in Scholar metrics.");
+        process.exit(0);
+    }
+
+    console.error(message);
     process.exit(1);
 });

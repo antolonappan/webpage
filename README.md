@@ -46,7 +46,8 @@ npm run build
 GitHub Actions keeps the generated site current:
 
 - `Build` runs on pushes and pull requests and fails if generated files are stale.
-- `Sync Research Site` runs daily, can be triggered manually, and runs after source-data changes on `main`. It updates arXiv metadata, downloads figures, checks Google Scholar citations/h-index/i10-index, rebuilds the site, validates it, and commits generated changes back to `main` when anything changed.
+- `Sync Research Site` runs monthly, can be triggered manually, and runs after source-data changes on `main`. It updates arXiv metadata, downloads figures, checks Google Scholar citations/h-index/i10-index, rebuilds the site, validates it, and commits generated changes back to `main` when anything changed.
+- If Google Scholar blocks CI, the workflow keeps the checked-in citation metrics and continues. The next successful monthly, manual, or local sync will update them.
 
 ## Preview
 
