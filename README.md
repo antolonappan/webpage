@@ -7,12 +7,16 @@ This folder is the standalone static website for https://antolonappan.me/.
 - `data/research/config.json` is the editable arXiv/publication list, Google Scholar profile URL, manual venue labels, DOI overrides, and code links.
 - `data/research/generated.json` is generated from arXiv metadata and arXiv/ar5iv figures.
 - `data/about.json` is the editable profile/about copy.
+- `data/tutorials/cmb` contains the CMB tutorial TeX source, original figure PDFs, and companion notebook.
 
 ## Pages
 
 - `/`
 - `/publications/`
 - `/research/`
+- `/tutorial/`
+- `/tutorial/cmb/`
+- `/tutorial/cmb/<chapter>/`
 - `/contact/`
 
 ## Regenerate
@@ -33,6 +37,8 @@ The generator reads:
 - `data/research/generated.json`
 - `data/about.json`
 - `assets/research`
+- `data/tutorials/cmb`
+- `assets/tutorials/cmb`
 
 When adding a new arXiv paper, run:
 

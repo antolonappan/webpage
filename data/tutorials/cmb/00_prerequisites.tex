@@ -1,0 +1,111 @@
+% 00_prerequisites.tex
+\section{Prerequisites}
+\label{ch:prereq}
+
+This tutorial is meant to be read with a Jupyter notebook open next to it. Every code cell you see in the chapters is a cell you paste into your notebook and run. \emph{There is nothing to install beyond standard scientific Python} — no \texttt{boltzmann.py}, no helper modules. By the time you finish chapter 7, your notebook will contain a complete CMB Boltzmann code, written by you, that produces TT, EE, TE, $C_\ell^{\phi\phi}$, lensed BB, and tensor BB spectra. We will compare against CAMB exactly once at the end, as a validation step.
+
+\subsection{Software}
+
+You need Python~3.10 or newer with:
+\begin{lstlisting}[style=python]
+pip install numpy scipy matplotlib jupyter
+pip install camb     # used only for the final validation
+\end{lstlisting}
+\texttt{numpy} and \texttt{scipy} do the numerics, \texttt{matplotlib} the plots, \texttt{jupyter} the interactive environment, and \texttt{camb} is the reference code we will compare our final result against.
+
+Start Jupyter from a clean working directory and create a notebook (for example \texttt{cmb\_tutorial.ipynb}). The cells you build up across the chapters \emph{are} the codebase.
+
+\subsection{Cell 1: imports and Planck-2018 parameters}
+
+This is the first cell of your notebook. It imports the libraries we will use throughout, and defines a parameter dictionary that every later function will consume.
+
+\begin{codebox}[Cell 1]
+\begin{lstlisting}[style=python]
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import integrate, interpolate, optimize, special
+
+# Optional: numba speeds up the inner Boltzmann RHS by ~10x.
+# Falls back gracefully if not installed.
+try:
+    from numba import njit
+    _jit = njit(cache=False)
+except ImportError:
+    _jit = lambda f: f
+
+# Default: Planck 2018 best-fit LCDM
+params = {
+    'omega_b_h2': 0.02237,    # physical baryon density
+    'omega_c_h2': 0.1200,     # physical cold dark matter density
+    'h':          0.6736,     # H_0 / (100 km/s/Mpc)
+    'n_s':        0.9649,     # scalar spectral index
+    'A_s':        2.1e-9,     # scalar amplitude at k_pivot = 0.05 Mpc^-1
+    'tau_reion':  0.0544,     # reionisation optical depth
+    'N_eff':      3.044,      # effective number of relativistic species
+    'T_cmb':      2.7255,     # CMB temperature today (K)
+    'Y_He':       0.245,      # primordial helium mass fraction
+    'k_pivot':    0.05,       # pivot scale (1/Mpc)
+    'ell_max':    2500,       # maximum multipole we will compute
+}
+
+plt.rcParams.update({'figure.figsize': (7, 4.5), 'font.size': 11})
+\end{lstlisting}
+\end{codebox}
+
+A tour of the parameters:
+
+\begin{itemize}
+  \item $\omega_b \equiv \Omega_b h^2$ and $\omega_c \equiv \Omega_c h^2$ are the \emph{physical} baryon and cold-dark-matter densities, in units of $\rho_{c,0}/h^2$. The CMB and BBN measure these directly (they fix the amount of matter per unit volume at a given temperature, independent of $h$).
+  \item $h$ is the dimensionless Hubble parameter: $H_0 = 100\, h\,\mathrm{km}\,\mathrm{s}^{-1}\,\mathrm{Mpc}^{-1}$. Planck~2018 gives $h \approx 0.674$.
+  \item $A_s$ and $n_s$ describe the primordial scalar curvature power spectrum, $\mathcal{P}_\mathcal{R}(k) = A_s (k/k_*)^{n_s - 1}$, at the pivot scale $k_* = 0.05\,\mathrm{Mpc}^{-1}$.
+  \item $\tau_\mathrm{reion}$ is the optical depth to reionisation. Photons that reach us today have a $1 - e^{-\tau_\mathrm{reion}} \approx 6\%$ chance of having rescattered after the universe was reionised.
+  \item $N_\mathrm{eff} \approx 3.044$, slightly above $3$ because of partial heating of neutrinos during $e^\pm$ annihilation.
+  \item $T_\mathrm{cmb}$ sets the absolute photon temperature today; combined with $h$ it fixes $\Omega_\gamma$ via the Stefan-Boltzmann law.
+  \item $Y_p \approx 0.245$ is the primordial helium mass fraction; relevant for recombination because each helium atom contributes two electrons.
+\end{itemize}
+
+\subsection{Units}
+
+We use natural units with $c = \hbar = k_B = 1$. The remaining dimensional scale is length, in megaparsecs:
+\[
+  1\,\mathrm{Mpc} \approx 3.086 \times 10^{22}\,\mathrm{m}.
+\]
+Comoving wavenumbers $k$ are in $\mathrm{Mpc}^{-1}$. The Hubble parameter $H$ has units of $\mathrm{Mpc}^{-1}$ as well (since $c = 1$). Two ``Hubble'' parameters will appear:
+\[
+  H \equiv \frac{1}{a}\frac{\mathrm{d}a}{\mathrm{d}t} \quad\text{(cosmic time)},
+  \qquad
+  \mathcal{H} \equiv \frac{1}{a}\frac{\mathrm{d}a}{\mathrm{d}\tau} = a H \quad\text{(conformal time)}.
+\]
+The combination $k\tau$, which appears throughout the perturbation equations, is dimensionless.
+
+\subsection{What we will build}
+
+Here is the architecture we will assemble, chapter by chapter:
+
+\begin{description}[leftmargin=2.5em,style=nextline]
+  \item[Chapter 1 -- Background] Physical constants. \texttt{init\_background}, \texttt{total\_density\_a4}, \texttt{hubble}, \texttt{conformal\_time}, \texttt{sound\_horizon}, \texttt{build\_background}. The expanding-universe layer that every later chapter relies on.
+  \item[Chapter 2 -- Recombination] \texttt{solve\_recombination} (Peebles ODEs), reionisation, \texttt{build\_thermodynamics} (visibility function).
+  \item[Chapter 3 -- Perturbations] \texttt{init\_perturbation\_grid}, \texttt{adiabatic\_ics}, \texttt{boltzmann\_derivs}, \texttt{evolve\_k}. The Boltzmann hierarchy in synchronous gauge with tight coupling.
+  \item[Chapter 4 -- Line of sight] \texttt{build\_sources}: the Seljak-Zaldarriaga trick that turns the hierarchy into a one-dimensional integral.
+  \item[Chapter 5 -- Power spectra] \texttt{make\_k\_grid}, \texttt{make\_tau\_grid}, \texttt{compute\_spectra}. Projection to $C_\ell^{TT}$, $C_\ell^{EE}$, $C_\ell^{TE}$. First validation against CAMB.
+  \item[Chapter 6 -- Lensing] \texttt{lensing\_potential}, Wigner-$d$ recursion, \texttt{lens\_spectra}. Lensed TT/EE/BB.
+  \item[Chapter 7 -- Tensors] \texttt{tensor\_spectra}. Tensor BB from primordial gravitational waves. Final validation against CAMB.
+\end{description}
+
+By the end your notebook will have on the order of $1500$ lines of code, divided into about thirty cells. Each cell is a function (or a small group) tied to a specific equation in the text. If you ever lose track of why a particular line exists, the section that introduced it explains it. The code does not depend on anything not shown in the chapters.
+
+\subsection{Mathematical tools you will meet later}
+
+A few mathematical objects are needed only in specific chapters; we introduce each where it first appears so that you build intuition together with the physics:
+
+\begin{itemize}
+  \item \textbf{Christoffel symbols, Ricci tensor, Einstein equations} -- chapter 1, when we derive the Friedmann equation from general relativity.
+  \item \textbf{Conformal time and the comoving horizon} -- chapter 1, end.
+  \item \textbf{Spherical Bessel functions} $j_\ell(x)$ -- chapter 4, where they appear in the line-of-sight integration.
+  \item \textbf{Spherical harmonics} $Y_{\ell m}$ and the addition theorem -- chapter 4, when we move from Fourier modes to multipoles.
+  \item \textbf{Wigner $d$-functions} $d^\ell_{ss'}(\beta)$ -- chapter 6, when we lens polarisation. They generalise Legendre polynomials to spin-2 fields.
+\end{itemize}
+
+\noindent\hrulefill
+
+\noindent Once Cell 1 has run without error, you are ready for chapter 1.

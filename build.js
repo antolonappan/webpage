@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { execFileSync } = require("child_process");
 const katex = require("katex");
+const { createTutorialRenderer, labelId } = require("./scripts/tutorial-renderer");
 
 const outDir = __dirname;
 const rootDir = __dirname;
@@ -229,6 +230,20 @@ const pictureMarkup = ({ src, alt, className = "", loading = "lazy", decoding = 
                             <img ${attributes}>
                         </picture>`;
 };
+
+let tutorialReferenceHrefByLabel = {};
+
+function tutorialReferenceHref(label) {
+    return tutorialReferenceHrefByLabel[label] || `#${labelId(label)}`;
+}
+
+const tutorialRenderer = createTutorialRenderer({
+    katex,
+    pictureMarkup,
+    escapeHtml,
+    escapeAttribute,
+    resolveReference: tutorialReferenceHref
+});
 
 const formatUpdated = new Intl.DateTimeFormat("en", {
     month: "long",
@@ -477,6 +492,7 @@ const navItems = [
     { key: "home", label: "Home", href: "/" },
     { key: "publications", label: "Publications", href: "/publications/" },
     { key: "research", label: "Research", href: "/research/" },
+    { key: "tutorial", label: "Tutorial", href: "/tutorial/" },
     { key: "cv", label: "CV", href: "/assets/files/Anto.pdf" },
     { key: "contact", label: "Contact", href: "/contact/" }
 ];
@@ -653,6 +669,186 @@ const contactContent = `
                 </div>
             </section>`;
 
+const cmbTutorialSourceDir = path.join(rootDir, "data/tutorials/cmb");
+const readCmbChapter = (file) => fs.readFileSync(path.join(cmbTutorialSourceDir, file), "utf8");
+const CMB_BASE_URL = "/tutorial/cmb/";
+const CMB_NOTEBOOK_URL = "/assets/tutorials/cmb/files/cmb_tutorial.ipynb";
+const CMB_PDF_URL = "/assets/tutorials/cmb/files/cmb_tutorial.pdf";
+const cmbTutorialChapters = [
+    { file: "00_home.tex", pathSegment: "home", label: "Home" },
+    { file: "00_prerequisites.tex", pathSegment: "prerequisites", label: "Prerequisites" },
+    { file: "01_background.tex", pathSegment: "background", label: "1. Background" },
+    { file: "02_recombination.tex", pathSegment: "recombination", label: "2. Recombination" },
+    { file: "03_perturbations.tex", pathSegment: "perturbations", label: "3. Perturbations" },
+    { file: "04_line_of_sight.tex", pathSegment: "line-of-sight", label: "4. Line of sight" },
+    { file: "05_power_spectrum.tex", pathSegment: "power-spectra", label: "5. Power spectra" },
+    { file: "06_lensing.tex", pathSegment: "lensing", label: "6. Lensing" },
+    { file: "07_tensors.tex", pathSegment: "tensors", label: "7. Tensors" }
+].map((chapter, index) => {
+    const source = readCmbChapter(chapter.file);
+    const sectionTitle = tutorialRenderer.firstSectionTitle(source) || chapter.label;
+
+    return {
+        ...chapter,
+        index,
+        source,
+        sectionTitle,
+        slug: `cmb-${chapter.pathSegment}`,
+        pathName: `${CMB_BASE_URL}${chapter.pathSegment}/`,
+        output: `tutorial/cmb/${chapter.pathSegment}/index.html`
+    };
+});
+
+tutorialReferenceHrefByLabel = cmbTutorialChapters.reduce((references, chapter) => {
+    chapter.source.replace(/\\label\{([^}]+)\}/g, (_, label) => {
+        references[label] = `${chapter.pathName}#${labelId(label)}`;
+        return "";
+    });
+
+    return references;
+}, {});
+
+const cmbNotebookDownloadPanel = `
+                        <div class="tutorial-download-panel" aria-labelledby="cmb-download-title">
+                            <div>
+                                <p class="section-kicker">Companion notebook</p>
+                                <h3 id="cmb-download-title">Download the verified notebook</h3>
+                                <p>The Jupyter notebook contains the working code cells in order, including the final CAMB validation cells.</p>
+                            </div>
+                            <div class="tutorial-download-actions">
+                                <a class="theme-button theme-button-code" href="${CMB_NOTEBOOK_URL}" download>Download notebook</a>
+                                <a class="theme-button" href="${CMB_PDF_URL}" download>Download PDF</a>
+                            </div>
+                        </div>`;
+
+const cmbChapterNavMarkup = cmbTutorialChapters.map((chapter) => `
+                        <a href="${escapeAttribute(chapter.pathName)}">
+                            <span>${escapeHtml(chapter.label)}</span>
+                            <small>${escapeHtml(plainText(chapter.sectionTitle))}</small>
+                        </a>`).join("");
+
+const cmbChapterPager = (chapter) => {
+    const previous = cmbTutorialChapters[chapter.index - 1];
+    const next = cmbTutorialChapters[chapter.index + 1];
+
+    return `
+                    <nav class="tutorial-pager" aria-label="CMB tutorial chapter navigation">
+                        ${previous ? `
+                        <a href="${escapeAttribute(previous.pathName)}">
+                            <span>Previous</span>
+                            <strong>${escapeHtml(previous.label)}</strong>
+                        </a>` : `
+                        <a href="${CMB_BASE_URL}">
+                            <span>Contents</span>
+                            <strong>CMB tutorial</strong>
+                        </a>`}
+                        ${next ? `
+                        <a href="${escapeAttribute(next.pathName)}">
+                            <span>Next</span>
+                            <strong>${escapeHtml(next.label)}</strong>
+                        </a>` : `
+                        <a href="${CMB_BASE_URL}">
+                            <span>Back to</span>
+                            <strong>Contents</strong>
+                        </a>`}
+                    </nav>`;
+};
+
+const cmbChapterContent = (chapter) => {
+    const rendered = tutorialRenderer.renderBlocks(chapter.source).html;
+    const isFinalChapter = chapter.index === cmbTutorialChapters.length - 1;
+
+    return `
+            <section class="content-section tutorial-reader-section tutorial-chapter-page" aria-label="${escapeAttribute(chapter.label)}">
+                <div class="tutorial-chapter-heading">
+                    <span>Tutorial / CMB / ${escapeHtml(chapter.label)}</span>
+                    <a href="${CMB_BASE_URL}">Contents</a>
+                </div>
+                <article class="tutorial-chapter" id="${escapeAttribute(chapter.slug)}">
+${rendered}
+${isFinalChapter ? cmbNotebookDownloadPanel : ""}
+                </article>
+                ${cmbChapterPager(chapter)}
+            </section>`;
+};
+
+const cmbChapterPages = cmbTutorialChapters.map((chapter) => ({
+    output: chapter.output,
+    pathName: chapter.pathName,
+    activeKey: "tutorial",
+    title: `${plainText(chapter.sectionTitle)} | CMB Tutorial | Anto Idicherian Lonappan`,
+    description: `${plainText(chapter.sectionTitle)} in the CMB tutorial by Anto Idicherian Lonappan, with copyable Python code and rendered equations.`,
+    content: cmbChapterContent(chapter)
+}));
+
+const tutorialIndexContent = `
+            <section class="content-section tutorial-index-section" aria-labelledby="tutorial-title">
+                <p class="section-kicker">Tutorial</p>
+                <h2 id="tutorial-title">Tutorials</h2>
+                <p class="lead">Computational notes and notebooks for CMB cosmology. More tutorials can be added here as the collection grows.</p>
+                <div class="tutorial-card-list">
+                    <article class="tutorial-card">
+                        <a class="tutorial-card-media" href="/tutorial/cmb/" aria-label="Open the CMB tutorial">
+                            ${pictureMarkup({
+                                src: "assets/tutorials/cmb/figures/planck_sky.jpg",
+                                alt: "Planck cosmic microwave background temperature map"
+                            })}
+                        </a>
+                        <div class="tutorial-card-body">
+                            <p class="section-kicker">CMB</p>
+                            <h3><a href="/tutorial/cmb/">A CMB Tutorial</a></h3>
+                            <p>From first principles to the temperature, polarisation, lensing, and tensor spectra, with a companion notebook and copyable code blocks.</p>
+                            <div class="tutorial-meta-grid" aria-label="CMB tutorial contents">
+                                <span><strong>${cmbTutorialChapters.length}</strong> chapters</span>
+                                <span><strong>57</strong> copyable blocks</span>
+                                <span><strong>1</strong> notebook</span>
+                            </div>
+                            <div class="feature-links">
+                                <a class="theme-button" href="/tutorial/cmb/">Open tutorial</a>
+                                <a class="theme-button theme-button-code" href="${CMB_NOTEBOOK_URL}" download>Notebook</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>`;
+
+const cmbTutorialContent = `
+            <section class="content-section tutorial-hero-section" id="cmb-tutorial-top" aria-labelledby="cmb-tutorial-title">
+                <p class="section-kicker">Tutorial / CMB</p>
+                <h2 id="cmb-tutorial-title">A CMB Tutorial: From First Principles to the Power Spectrum</h2>
+                <p class="lead">A guided build of a compact CMB Boltzmann pipeline, moving from the expanding background through recombination, perturbations, line-of-sight projection, lensing, and primordial tensor modes.</p>
+                <figure class="tutorial-figure tutorial-figure-planck">
+                    ${pictureMarkup({
+                        src: "assets/tutorials/cmb/figures/planck_sky.jpg",
+                        alt: "Planck cosmic microwave background temperature map",
+                        loading: "",
+                        decoding: "async",
+                        fetchpriority: "high"
+                    })}
+                    <figcaption>Planck CMB temperature map. Credit: <a href="https://planck.ipac.caltech.edu/image/planck13-002a" target="_blank" rel="noopener noreferrer">ESA and the Planck Collaboration / U.S. Planck Data Center</a>.</figcaption>
+                </figure>
+                <div class="feature-links">
+                    <a class="theme-button" href="${escapeAttribute(cmbTutorialChapters[0].pathName)}">Start reading</a>
+                    <a class="theme-button theme-button-code" href="${CMB_NOTEBOOK_URL}" download>Download notebook</a>
+                </div>
+            </section>
+            <section class="content-section tutorial-toc-section" aria-labelledby="cmb-contents-title">
+                <p class="section-kicker">Contents</p>
+                <h2 id="cmb-contents-title">Chapters</h2>
+                <nav class="tutorial-chapter-nav" aria-label="CMB tutorial chapters">
+                    ${cmbChapterNavMarkup}
+                </nav>
+            </section>
+            <section class="content-section tutorial-reader-section" aria-labelledby="cmb-reader-title">
+                <p class="section-kicker">CMB Tutorial</p>
+                <h2 id="cmb-reader-title">Read chapter by chapter</h2>
+                <p class="lead">Each chapter opens as its own page with copyable code blocks and previous/next navigation.</p>
+                <div class="feature-links">
+                    <a class="theme-button" href="${escapeAttribute(cmbTutorialChapters[0].pathName)}">Begin with Home</a>
+                    <a class="theme-button theme-button-code" href="${CMB_NOTEBOOK_URL}" download>Notebook</a>
+                </div>
+            </section>`;
+
 const outputPages = [
     {
         output: "index.html",
@@ -678,6 +874,23 @@ const outputPages = [
         description: "Research interests and profile for Anto Idicherian Lonappan: CMB polarization, gravitational lensing, cosmic birefringence, delensing, and observational cosmology.",
         content: researchContent
     },
+    {
+        output: "tutorial/index.html",
+        pathName: "/tutorial/",
+        activeKey: "tutorial",
+        title: "Tutorial | Anto Idicherian Lonappan",
+        description: "Computational CMB cosmology tutorials and companion notebooks by Anto Idicherian Lonappan.",
+        content: tutorialIndexContent
+    },
+    {
+        output: "tutorial/cmb/index.html",
+        pathName: "/tutorial/cmb/",
+        activeKey: "tutorial",
+        title: "CMB Tutorial | Anto Idicherian Lonappan",
+        description: "A CMB tutorial from first principles to power spectra, lensing, tensor modes, and CAMB validation with copyable Python code blocks.",
+        content: cmbTutorialContent
+    },
+    ...cmbChapterPages,
     {
         output: "contact/index.html",
         pathName: "/contact/",
@@ -975,6 +1188,7 @@ p {
 .content-section {
   padding: 1.4rem;
   border-bottom: 1px solid var(--line);
+  scroll-margin-top: 8rem;
   content-visibility: auto;
   contain-intrinsic-size: 760px;
 }
@@ -1378,6 +1592,412 @@ figcaption {
   overflow-wrap: anywhere;
 }
 
+.tutorial-card-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.tutorial-card {
+  display: grid;
+  overflow: hidden;
+  background: var(--wash);
+  border: 1px solid var(--line);
+}
+
+.tutorial-card-media {
+  display: block;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  background: var(--tint);
+  border-bottom: 1px solid var(--line);
+}
+
+.tutorial-card-media picture,
+.tutorial-card-media img {
+  width: 100%;
+  height: 100%;
+}
+
+.tutorial-card-media img {
+  object-fit: cover;
+}
+
+.tutorial-card-body {
+  padding: 1rem;
+}
+
+.tutorial-card h3 {
+  margin-bottom: 0.55rem;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.tutorial-card h3 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.tutorial-card h3 a:hover,
+.tutorial-card h3 a:focus {
+  color: var(--green);
+}
+
+.tutorial-card p {
+  color: var(--text);
+}
+
+.tutorial-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 0.9rem 0;
+}
+
+.tutorial-meta-grid span {
+  min-width: 0;
+  padding: 0.65rem;
+  background: var(--paper);
+  border-left: 4px solid var(--green);
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.tutorial-meta-grid strong {
+  display: block;
+  color: var(--green-dark);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.tutorial-figure {
+  margin: 1.15rem 0;
+}
+
+.tutorial-figure img {
+  width: 100%;
+  max-height: 34rem;
+  object-fit: contain;
+  padding: 0.45rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.tutorial-figure-planck img {
+  aspect-ratio: 2 / 1;
+  padding: 0;
+  object-fit: cover;
+}
+
+.tutorial-chapter-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.tutorial-chapter-nav a {
+  display: grid;
+  min-height: 3rem;
+  align-items: center;
+  padding: 0.62rem 0.72rem;
+  background: var(--wash);
+  border-left: 4px solid var(--green);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.tutorial-chapter-nav a:hover,
+.tutorial-chapter-nav a:focus {
+  background: var(--tint);
+}
+
+.tutorial-chapter-nav span {
+  font-size: 0.86rem;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.tutorial-chapter-nav small {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.tutorial-reader {
+  display: grid;
+  gap: 2.4rem;
+}
+
+.tutorial-chapter {
+  min-width: 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 8rem;
+}
+
+.tutorial-chapter:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.tutorial-chapter-page .tutorial-chapter {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.tutorial-chapter-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.tutorial-chapter-heading span {
+  color: var(--green);
+  font-size: 0.8rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.tutorial-chapter-heading a,
+.tutorial-xref {
+  color: var(--green);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.tutorial-chapter-heading a:hover,
+.tutorial-chapter-heading a:focus,
+.tutorial-xref:hover,
+.tutorial-xref:focus {
+  text-decoration: underline;
+}
+
+.tutorial-chapter h2 {
+  margin-top: 1.2rem;
+  font-size: 1.55rem;
+}
+
+.tutorial-chapter h2:first-of-type {
+  margin-top: 0;
+}
+
+.tutorial-chapter h3 {
+  margin: 1.45rem 0 0.55rem;
+  color: var(--ink);
+  font-size: 1.16rem;
+  line-height: 1.35;
+}
+
+.tutorial-chapter h4 {
+  margin: 1rem 0 0.35rem;
+  color: var(--green-dark);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.tutorial-chapter p,
+.tutorial-list-block,
+.tutorial-description-list dd,
+.tutorial-download-panel p {
+  color: var(--text);
+}
+
+.tutorial-list-block {
+  margin: 0.8rem 0 1rem;
+  padding-left: 1.35rem;
+}
+
+.tutorial-list-block li + li {
+  margin-top: 0.55rem;
+}
+
+.tutorial-description-list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0.9rem 0 1.1rem;
+}
+
+.tutorial-description-list dt {
+  color: var(--green-dark);
+  font-weight: 850;
+}
+
+.tutorial-description-list dd {
+  margin: -0.45rem 0 0;
+  padding-left: 0.8rem;
+  border-left: 3px solid var(--line);
+}
+
+.tutorial-callout {
+  margin: 1.05rem 0;
+  padding: 0.95rem 1rem;
+  background: var(--tint);
+  border-left: 4px solid var(--green);
+}
+
+.tutorial-callout-physinsight {
+  background: #fff8ed;
+  border-left-color: var(--gold);
+}
+
+.tutorial-callout > strong {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--green-dark);
+}
+
+.tutorial-callout-physinsight > strong {
+  color: var(--gold);
+}
+
+.tutorial-code {
+  margin: 1.05rem 0;
+  overflow: hidden;
+  background: #101823;
+  border: 1px solid #24364f;
+}
+
+.tutorial-code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 2.45rem;
+  padding: 0.4rem 0.55rem 0.4rem 0.8rem;
+  background: #17243a;
+  color: #e8edf7;
+}
+
+.tutorial-code-header span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.tutorial-code-header button {
+  flex: 0 0 auto;
+  min-height: 1.8rem;
+  border: 1px solid rgba(232, 237, 247, 0.38);
+  border-radius: 4px;
+  padding: 0 0.55rem;
+  background: transparent;
+  color: #e8edf7;
+  cursor: pointer;
+  font-size: 0.76rem;
+  font-weight: 850;
+}
+
+.tutorial-code-header button:hover,
+.tutorial-code-header button:focus {
+  background: #e8edf7;
+  color: #17243a;
+}
+
+.tutorial-code pre {
+  margin: 0;
+  overflow-x: auto;
+  padding: 0.95rem;
+}
+
+.tutorial-code code {
+  font-family: inherit;
+}
+
+.tutorial-code pre code {
+  display: block;
+  color: #eef4ff;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  white-space: pre;
+}
+
+.tutorial-math {
+  margin: 1rem 0;
+  overflow-x: auto;
+  padding: 0.75rem;
+  background: var(--wash);
+  border-left: 4px solid var(--blue);
+}
+
+.tutorial-anchor {
+  display: block;
+  position: relative;
+  top: -8rem;
+}
+
+.tutorial-rule {
+  height: 1px;
+  margin: 1.3rem 0;
+  border: 0;
+  background: var(--line);
+}
+
+.tutorial-download-panel {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.4rem;
+  padding: 1rem;
+  background: var(--wash);
+  border: 1px solid var(--line);
+}
+
+.tutorial-download-panel h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.15rem;
+}
+
+.tutorial-download-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.tutorial-pager {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.6rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.tutorial-pager a {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+  padding: 0.8rem;
+  background: var(--wash);
+  border-left: 4px solid var(--green);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.tutorial-pager a:hover,
+.tutorial-pager a:focus {
+  background: var(--tint);
+}
+
+.tutorial-pager span {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.tutorial-pager strong {
+  font-size: 0.95rem;
+}
+
 .updated-note {
   margin: 1rem 0 0;
   font-size: 0.88rem;
@@ -1446,6 +2066,27 @@ figcaption {
   }
 
   .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tutorial-card {
+    grid-template-columns: minmax(14rem, 0.42fr) minmax(0, 0.58fr);
+  }
+
+  .tutorial-card-media {
+    aspect-ratio: auto;
+    min-height: 16rem;
+    height: 100%;
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+  }
+
+  .tutorial-download-panel {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .tutorial-pager {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1543,6 +2184,47 @@ const js = `(() => {
       });
     }
   });
+
+  const copyText = async (text) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.top = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+  };
+
+  document.querySelectorAll("[data-copy-code]").forEach((button) => {
+    const block = button.closest("[data-code-block]");
+    const code = block ? block.querySelector("code") : null;
+
+    if (!code) {
+      return;
+    }
+
+    button.addEventListener("click", async () => {
+      const originalLabel = button.textContent;
+
+      try {
+        await copyText(code.textContent.replace(/\\n$/, ""));
+        button.textContent = "Copied";
+      } catch (error) {
+        button.textContent = "Failed";
+      }
+
+      window.setTimeout(() => {
+        button.textContent = originalLabel;
+      }, 1400);
+    });
+  });
 })();`;
 
 const manifest = {
@@ -1582,6 +2264,9 @@ This folder is the standalone static website for https://antolonappan.me/.
 - \`/\`
 - \`/publications/\`
 - \`/research/\`
+- \`/tutorial/\`
+- \`/tutorial/cmb/\`
+- \`/tutorial/cmb/<chapter>/\`
 - \`/contact/\`
 
 ## Regenerate
@@ -1598,6 +2283,8 @@ The generator reads:
 - \`components/pages/research/generated.json\`
 - \`components/pages/about/data.json\`
 - \`public/assets/research\`
+- \`data/tutorials/cmb\`
+- \`assets/tutorials/cmb\`
 
 When adding a new arXiv paper, run:
 
@@ -1640,6 +2327,10 @@ const createWebpIfPossible = (file) => {
     const quality = file.includes(`${path.sep}research${path.sep}`) ? "86" : "82";
 
     try {
+        if (fs.existsSync(destination) && fs.statSync(destination).mtimeMs >= fs.statSync(file).mtimeMs) {
+            return;
+        }
+
         execFileSync("cwebp", ["-quiet", "-q", quality, file, "-o", destination], { stdio: "ignore" });
     } catch (error) {
         // Keep the original image fallback when WebP conversion is unavailable for a file.
@@ -1665,6 +2356,7 @@ const main = () => {
 
     fs.rmSync(path.join(outDir, "publications"), { recursive: true, force: true });
     fs.rmSync(path.join(outDir, "research"), { recursive: true, force: true });
+    fs.rmSync(path.join(outDir, "tutorial"), { recursive: true, force: true });
     fs.rmSync(path.join(outDir, "contact"), { recursive: true, force: true });
     fs.rmSync(path.join(assetsDir, "css"), { recursive: true, force: true });
     fs.rmSync(path.join(assetsDir, "js"), { recursive: true, force: true });
@@ -1674,12 +2366,14 @@ const main = () => {
     ensureDir(path.join(assetsDir, "images"));
     ensureDir(path.join(assetsDir, "files"));
     ensureDir(path.join(assetsDir, "research"));
+    ensureDir(path.join(assetsDir, "tutorials"));
     ensureDir(path.join(assetsDir, "vendor/katex"));
 
     optimizeJpegIfPossible(path.join(assetsDir, "images/anto.jpg"), 1200);
     copyDir(path.join(rootDir, "node_modules/katex/dist/fonts"), path.join(assetsDir, "vendor/katex/fonts"));
     walkFiles(path.join(assetsDir, "images")).forEach(createWebpIfPossible);
     walkFiles(path.join(assetsDir, "research")).forEach(createWebpIfPossible);
+    walkFiles(path.join(assetsDir, "tutorials")).forEach(createWebpIfPossible);
 
     const katexCss = path.join(rootDir, "node_modules/katex/dist/katex.min.css");
     if (fs.existsSync(katexCss)) {

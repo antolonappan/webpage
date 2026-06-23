@@ -1,0 +1,83 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=red,urlcolor=blue]{hyperref}
+\usepackage{cleveref}
+\usepackage{listings}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+\tcbuselibrary{breakable, skins}
+
+\definecolor{codebg}{RGB}{248,250,248}
+\definecolor{codeframe}{RGB}{40,120,60}
+\definecolor{kw}{RGB}{0,90,160}
+\definecolor{str}{RGB}{160,80,0}
+\definecolor{cmt}{RGB}{120,120,120}
+
+\lstdefinestyle{python}{
+  language=Python, basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{kw}\bfseries, stringstyle=\color{str},
+  commentstyle=\color{cmt}\itshape, showstringspaces=false,
+  breaklines=true, breakatwhitespace=true, numbers=left,
+  numberstyle=\tiny\color{cmt}, numbersep=8pt,
+  frame=none, backgroundcolor=\color{white}, xleftmargin=4pt
+}
+
+\newtcolorbox{codebox}[1][]{
+  enhanced, breakable, colback=codebg, colframe=codeframe,
+  fonttitle=\bfseries\small, title=#1, sharp corners=south,
+  boxrule=0.5pt, top=2pt, bottom=2pt, left=2pt, right=2pt,
+  before upper={\parindent0pt}
+}
+
+\newtcolorbox{aside}[1][]{
+  enhanced, breakable,
+  colback=blue!3, colframe=blue!50!black,
+  fonttitle=\bfseries\small, title=#1,
+  sharp corners=south, boxrule=0.5pt
+}
+
+\newtcolorbox{physinsight}[1][]{
+  enhanced, breakable,
+  colback=orange!5, colframe=orange!70!black,
+  fonttitle=\bfseries\small, title=#1,
+  sharp corners=south, boxrule=0.5pt
+}
+
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0pt}
+
+\title{A CMB Tutorial:\\ From First Principles to the Power Spectrum}
+\author{Anto Idicherian Lonappan}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\input{00_home.tex}
+\newpage
+\input{00_prerequisites.tex}
+\newpage
+\input{01_background.tex}
+\newpage
+\input{02_recombination.tex}
+\newpage
+\input{03_perturbations.tex}
+\newpage
+\input{04_line_of_sight.tex}
+\newpage
+\input{05_power_spectrum.tex}
+\newpage
+\input{06_lensing.tex}
+\newpage
+\input{07_tensors.tex}
+
+\end{document}

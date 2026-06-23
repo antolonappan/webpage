@@ -44,4 +44,45 @@
       });
     }
   });
+
+  const copyText = async (text) => {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.top = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+  };
+
+  document.querySelectorAll("[data-copy-code]").forEach((button) => {
+    const block = button.closest("[data-code-block]");
+    const code = block ? block.querySelector("code") : null;
+
+    if (!code) {
+      return;
+    }
+
+    button.addEventListener("click", async () => {
+      const originalLabel = button.textContent;
+
+      try {
+        await copyText(code.textContent.replace(/\n$/, ""));
+        button.textContent = "Copied";
+      } catch (error) {
+        button.textContent = "Failed";
+      }
+
+      window.setTimeout(() => {
+        button.textContent = originalLabel;
+      }, 1400);
+    });
+  });
 })();
