@@ -16,5 +16,6 @@ frontend:
       - favicon/**/*
       - publications/**/*
       - research/**/*
+      - tutorial/**/*
   cache:
     paths: []
